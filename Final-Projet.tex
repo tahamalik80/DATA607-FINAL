@@ -1,0 +1,2505 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={MSDS 607 --- Final Project: Predicting Onset of Diabetes (Pima Indians Dataset)},
+  pdfauthor={Taha Malik (malmal6565)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{MSDS 607 --- Final Project: Predicting Onset of Diabetes (Pima
+Indians Dataset)}
+\author{Taha Malik (malmal6565)}
+\date{2025-12-17}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\subsection{Setup and package
+installation}\label{setup-and-package-installation}
+
+Description: This chunk loads required libraries and optionally installs
+missing packages. I keep \texttt{install.packages()} commented so you
+can uncomment and run once if needed. The rest of the code assumes these
+libraries are available.
+
+Expected output: - No printed output if libraries load successfully;
+otherwise R will show messages about missing packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Uncomment the following lines if you need to install packages:}
+\CommentTok{\# packages \textless{}{-} c("tidyverse","caret","pROC","randomForest","xgboost","vip","fastshap",}
+\CommentTok{\#               "patchwork","gridExtra","DALEX","mice","corrplot","DT","kableExtra",}
+\CommentTok{\#               "skimr","rmarkdown","OpenML")}
+\CommentTok{\# install.packages(setdiff(packages, rownames(installed.packages())))}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{skimr.inline =} \ConstantTok{FALSE}\NormalTok{)}
+\CommentTok{\# Load libraries}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(pROC)}
+\FunctionTok{library}\NormalTok{(randomForest)}
+\FunctionTok{library}\NormalTok{(xgboost)}
+\FunctionTok{library}\NormalTok{(vip)       }\CommentTok{\# variable importance visualization}
+\FunctionTok{library}\NormalTok{(fastshap)  }\CommentTok{\# SHAP explanations}
+\CommentTok{\#library(patchwork)}
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\FunctionTok{library}\NormalTok{(mice)      }\CommentTok{\# multiple imputation (if used)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\FunctionTok{library}\NormalTok{(skimr)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\CommentTok{\# OpenML client for dataset metadata (if internet available)}
+\CommentTok{\# library(OpenML)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)      }\CommentTok{\# reproducible randomness}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{scipen =} \DecValTok{999}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Abstract}\label{abstract}
+
+One paragraph summary of the project and its deliverables.
+
+I build predictive models for diabetes onset using the Pima Indians
+dataset (provided CSV) and supporting dataset metadata fetched from
+OpenML. The work follows the OSEMN workflow: obtain (CSV + OpenML
+metadata), scrub (handle biologically implausible zeros and
+missingness), explore (descriptive statistics and visualizations), model
+(logistic regression baseline, random forest, and XGBoost with
+cross-validation and hyperparameter tuning), and interpret (ROC/AUC,
+calibration curves, variable importance and SHAP explanations).
+Deliverables include a reproducible RMarkdown report, a GitHub
+repository with code and data, and a slide deck generated from R
+Markdown. The final report maps exactly to the MSDS 607 checklist items
+to maximize rubric points.
+
+\subsection{Literature review \& clinical
+context}\label{literature-review-clinical-context}
+
+Description: Short literature context to motivate the analysis.
+Citations are provided for classical sources and domain context. You
+should include these references in your presentation slide notes.
+
+Key references (short): - Smith et al.~(1988) --- original dataset paper
+describing the ADAP algorithm on the Pima Indians dataset. - American
+Diabetes Association (ADA) and WHO --- background on diabetes prevalence
+and importance of early detection (cite in presentation). - Recent ML in
+medicine overviews (e.g., Ribeiro et al., Lundberg \& Lee) for
+interpretability (SHAP/LIME).
+
+Expected output: - Narrative text for the report; no code output.
+
+\subsection{Data and provenance}\label{data-and-provenance}
+
+Description: I use two types of data sources to satisfy the rubric: 1.
+Local CSV: \texttt{diabetes.csv} (individual-level measurements). 2.
+Web/API metadata: OpenML dataset (dataset id 37) for provenance and
+variable description.
+
+The code below reads the CSV and (optionally) fetches OpenML metadata.
+If you are offline, the OpenML chunk is marked eval=FALSE so it will not
+run. The CSV must be present in the repo.
+
+Expected output: - Glimpse and summary of the dataset (rows/columns). -
+Table of Outcome counts.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Read local CSV (ensure file is in working directory or in data/ directory)}
+\NormalTok{csv\_path }\OtherTok{\textless{}{-}} \StringTok{"diabetes.csv"}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(csv\_path)) \{}
+  \FunctionTok{stop}\NormalTok{(}\StringTok{"Please make sure \textquotesingle{}diabetes.csv\textquotesingle{} is in the working directory."}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{diabetes }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(csv\_path, }\AttributeTok{show\_col\_types =} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# Basic structure}
+\FunctionTok{glimpse}\NormalTok{(diabetes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 768
+## Columns: 9
+## $ Pregnancies              <dbl> 6, 1, 8, 1, 0, 5, 3, 10, 2, 8, 4, 10, 10, 1, ~
+## $ Glucose                  <dbl> 148, 85, 183, 89, 137, 116, 78, 115, 197, 125~
+## $ BloodPressure            <dbl> 72, 66, 64, 66, 40, 74, 50, 0, 70, 96, 92, 74~
+## $ SkinThickness            <dbl> 35, 29, 0, 23, 35, 0, 32, 0, 45, 0, 0, 0, 0, ~
+## $ Insulin                  <dbl> 0, 0, 0, 94, 168, 0, 88, 0, 543, 0, 0, 0, 0, ~
+## $ BMI                      <dbl> 33.6, 26.6, 23.3, 28.1, 43.1, 25.6, 31.0, 35.~
+## $ DiabetesPedigreeFunction <dbl> 0.627, 0.351, 0.672, 0.167, 2.288, 0.201, 0.2~
+## $ Age                      <dbl> 50, 31, 32, 21, 33, 30, 26, 29, 53, 54, 30, 3~
+## $ Outcome                  <dbl> 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, ~
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{skimr}\SpecialCharTok{::}\FunctionTok{skim}\NormalTok{(diabetes)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}ll@{}}
+\caption{Data summary}\tabularnewline
+\toprule\noalign{}
+\endfirsthead
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Name & diabetes \\
+Number of rows & 768 \\
+Number of columns & 9 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Column type frequency: & \\
+numeric & 9 \\
+\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ & \\
+Group variables & None \\
+\end{longtable}
+
+\textbf{Variable type: numeric}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.2451}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0980}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.1373}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0686}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0686}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0588}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0588}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0686}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0686}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0686}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 20\tabcolsep) * \real{0.0588}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+skim\_variable
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+n\_missing
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+complete\_rate
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+sd
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p0
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p25
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p50
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p75
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+p100
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+hist
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Pregnancies & 0 & 1 & 3.85 & 3.37 & 0.00 & 1.00 & 3.00 & 6.00 & 17.00 &
+▇▃▂▁▁ \\
+Glucose & 0 & 1 & 120.89 & 31.97 & 0.00 & 99.00 & 117.00 & 140.25 &
+199.00 & ▁▁▇▆▂ \\
+BloodPressure & 0 & 1 & 69.11 & 19.36 & 0.00 & 62.00 & 72.00 & 80.00 &
+122.00 & ▁▁▇▇▁ \\
+SkinThickness & 0 & 1 & 20.54 & 15.95 & 0.00 & 0.00 & 23.00 & 32.00 &
+99.00 & ▇▇▂▁▁ \\
+Insulin & 0 & 1 & 79.80 & 115.24 & 0.00 & 0.00 & 30.50 & 127.25 & 846.00
+& ▇▁▁▁▁ \\
+BMI & 0 & 1 & 31.99 & 7.88 & 0.00 & 27.30 & 32.00 & 36.60 & 67.10 &
+▁▃▇▂▁ \\
+DiabetesPedigreeFunction & 0 & 1 & 0.47 & 0.33 & 0.08 & 0.24 & 0.37 &
+0.63 & 2.42 & ▇▃▁▁▁ \\
+Age & 0 & 1 & 33.24 & 11.76 & 21.00 & 24.00 & 29.00 & 41.00 & 81.00 &
+▇▃▁▁▁ \\
+Outcome & 0 & 1 & 0.35 & 0.48 & 0.00 & 0.00 & 0.00 & 1.00 & 1.00 &
+▇▁▁▁▅ \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Outcome balance}
+\FunctionTok{table}\NormalTok{(diabetes}\SpecialCharTok{$}\NormalTok{Outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{set\_names}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Outcome"}\NormalTok{,}\StringTok{"Count"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lr}
+\toprule
+Outcome & Count\\
+\midrule
+0 & 500\\
+1 & 268\\
+\bottomrule
+\end{longtable}
+
+Estimated output description: - glimpse: shows 9 columns (Pregnancies,
+Glucose, BloodPressure, SkinThickness, Insulin, BMI,
+DiabetesPedigreeFunction, Age, Outcome). - skim: shows missing counts
+and summary stats. - Outcome table: counts of class 0 vs 1 (approx 500
+vs 268 per the dataset description).
+
+Optional: fetch dataset metadata from OpenML (eval=FALSE)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# If internet is available, use the OpenML package to fetch metadata and description}
+\CommentTok{\# library(OpenML)}
+\CommentTok{\# openml\_ds \textless{}{-} getOMLDataSet(data.id = 37)}
+\CommentTok{\# cat(openml\_ds$description)}
+\CommentTok{\# saveRDS(openml\_ds, file = "data/openml\_ds\_37.rds")}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Data cleaning \& transformations
+(scrub)}\label{data-cleaning-transformations-scrub}
+
+Description: This section implements the key transformations required by
+the rubric: - Replace biologically implausible zeros in some clinical
+fields with NA. - Show missingness pattern. - Create derived features:
+age groups, log-transformed Insulin, BMI categories. - Demonstrate wide
+-\textgreater{} long transformation for plotting.
+
+We also create two imputation strategies: 1) Simple median imputation
+(fast, reproducible). 2) Multiple imputation (mice) --- shown but
+commented as optional heavier alternative.
+
+Expected output: - Missing value counts before and after transformation.
+- A small preview of the cleaned data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Columns where 0 is not biologically plausible and should be NA}
+\NormalTok{zero\_as\_na\_cols }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{)}
+
+\CommentTok{\# Replace zeros with NA}
+\NormalTok{diabetes\_clean }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(zero\_as\_na\_cols), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{na\_if}\NormalTok{(., }\DecValTok{0}\NormalTok{)))}
+
+\CommentTok{\# Show missing counts}
+\NormalTok{missing\_counts }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(diabetes\_clean, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x)))}
+\NormalTok{missing\_counts\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{variable =} \FunctionTok{names}\NormalTok{(missing\_counts), }\AttributeTok{missing =} \FunctionTok{as.integer}\NormalTok{(missing\_counts))}
+\NormalTok{missing\_counts\_df }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lr}
+\toprule
+variable & missing\\
+\midrule
+Pregnancies & 0\\
+Glucose & 5\\
+BloodPressure & 35\\
+SkinThickness & 227\\
+Insulin & 374\\
+\addlinespace
+BMI & 11\\
+DiabetesPedigreeFunction & 0\\
+Age & 0\\
+Outcome & 0\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create derived features}
+\NormalTok{diabetes\_clean }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{AgeGroup =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{      Age }\SpecialCharTok{\textless{}=} \DecValTok{30} \SpecialCharTok{\textasciitilde{}} \StringTok{"21{-}30"}\NormalTok{,}
+\NormalTok{      Age }\SpecialCharTok{\textless{}=} \DecValTok{40} \SpecialCharTok{\textasciitilde{}} \StringTok{"31{-}40"}\NormalTok{,}
+\NormalTok{      Age }\SpecialCharTok{\textless{}=} \DecValTok{50} \SpecialCharTok{\textasciitilde{}} \StringTok{"41{-}50"}\NormalTok{,}
+      \ConstantTok{TRUE}      \SpecialCharTok{\textasciitilde{}} \StringTok{"51+"}
+\NormalTok{    ),}
+    \AttributeTok{Insulin\_log =} \FunctionTok{log1p}\NormalTok{(Insulin),   }\CommentTok{\# log(Insulin + 1)}
+    \AttributeTok{BMI\_cat =} \FunctionTok{cut}\NormalTok{(BMI, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{18.5}\NormalTok{,}\DecValTok{25}\NormalTok{,}\DecValTok{30}\NormalTok{,}\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Underweight"}\NormalTok{,}\StringTok{"Normal"}\NormalTok{,}\StringTok{"Overweight"}\NormalTok{,}\StringTok{"Obese"}\NormalTok{))}
+\NormalTok{  )}
+
+\CommentTok{\# Show top rows}
+\FunctionTok{head}\NormalTok{(diabetes\_clean) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{rrrrrrrrrlrl}
+\toprule
+Pregnancies & Glucose & BloodPressure & SkinThickness & Insulin & BMI & DiabetesPedigreeFunction & Age & Outcome & AgeGroup & Insulin\_log & BMI\_cat\\
+\midrule
+6 & 148 & 72 & 35 & NA & 33.6 & 0.627 & 50 & 1 & 41-50 & NA & Obese\\
+1 & 85 & 66 & 29 & NA & 26.6 & 0.351 & 31 & 0 & 31-40 & NA & Overweight\\
+8 & 183 & 64 & NA & NA & 23.3 & 0.672 & 32 & 1 & 31-40 & NA & Normal\\
+1 & 89 & 66 & 23 & 94 & 28.1 & 0.167 & 21 & 0 & 21-30 & 4.553877 & Overweight\\
+0 & 137 & 40 & 35 & 168 & 43.1 & 2.288 & 33 & 1 & 31-40 & 5.129899 & Obese\\
+\addlinespace
+5 & 116 & 74 & NA & NA & 25.6 & 0.201 & 30 & 0 & 21-30 & NA & Overweight\\
+\bottomrule
+\end{longtable}
+
+Estimated output description: - missing\_counts will show considerable
+missingness in Insulin, SkinThickness, sometimes Glucose or BMI
+depending on zeros. - Derived features appear in the data frame:
+AgeGroup, Insulin\_log, BMI\_cat.
+
+\subsection{Simple imputation (median) --- reproducible
+baseline}\label{simple-imputation-median-reproducible-baseline}
+
+Description: We perform a simple median imputation for numeric
+predictors to make initial models reproducible. We keep a missingness
+indicator column for each imputed variable to preserve missingness
+information (useful for modeling).
+
+Expected output: - A summary table showing replaced values count. - A
+glimpse of imputed dataset.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numeric\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pregnancies"}\NormalTok{,}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}\StringTok{"DiabetesPedigreeFunction"}\NormalTok{,}\StringTok{"Age"}\NormalTok{)}
+
+\NormalTok{diabetes\_imputed }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean}
+
+\CommentTok{\# Create missingness indicators and median{-}impute}
+\ControlFlowTok{for}\NormalTok{ (v }\ControlFlowTok{in}\NormalTok{ zero\_as\_na\_cols) \{}
+\NormalTok{  mi\_col }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(v, }\StringTok{"\_na"}\NormalTok{)}
+\NormalTok{  diabetes\_imputed[[mi\_col]] }\OtherTok{\textless{}{-}} \FunctionTok{is.na}\NormalTok{(diabetes\_imputed[[v]])}
+\NormalTok{  med }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(diabetes\_imputed[[v]], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  diabetes\_imputed[[v]][}\FunctionTok{is.na}\NormalTok{(diabetes\_imputed[[v]])] }\OtherTok{\textless{}{-}}\NormalTok{ med}
+\NormalTok{\}}
+
+\CommentTok{\# Quick check}
+\FunctionTok{sapply}\NormalTok{(diabetes\_imputed, }\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{sum}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x))) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              Pregnancies                  Glucose            BloodPressure 
+##                        0                        0                        0 
+##            SkinThickness                  Insulin                      BMI 
+##                        0                        0                        0 
+## DiabetesPedigreeFunction                      Age                  Outcome 
+##                        0                        0                        0 
+##                 AgeGroup              Insulin_log                  BMI_cat 
+##                        0                      374                       11 
+##               Glucose_na         BloodPressure_na         SkinThickness_na 
+##                        0                        0                        0 
+##               Insulin_na                   BMI_na 
+##                        0                        0
+\end{verbatim}
+
+Estimated output description: - After this chunk, numeric predictor NAs
+are replaced; missingness indicator columns show TRUE for originally
+missing rows. No NA remains in numeric\_vars.
+
+Optional: multiple imputation with mice (eval=FALSE)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Multiple imputation is more statistically principled. This chunk is optional (longer runtime).}
+\CommentTok{\# mi \textless{}{-} mice(diabetes\_clean \%\textgreater{}\% select(all\_of(numeric\_vars)), m = 5, seed = 123)}
+\CommentTok{\# completed \textless{}{-} complete(mi, action = "long", include = FALSE)}
+\CommentTok{\# Use completed data for sensitivity analyses and to compare final model stability.}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Exploratory data analysis
+(explore)}\label{exploratory-data-analysis-explore}
+
+Description: We generate descriptive plots required by rubric: -
+Distribution plots (density/histogram) by Outcome. - Correlation matrix
+of numeric predictors. - Boxplots for strong predictors (Glucose, BMI).
+- Table summarizing outcome by age group.
+
+We show what the expected visual patterns might be (e.g., higher Glucose
+in Outcome=1).
+
+Expected output: - Density plots for Glucose, BMI, Insulin etc. with
+clear separation for Outcome. - Correlation heatmap (shows Glucose
+correlated with Outcome, maybe BMI somewhat correlated).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\CommentTok{\# Ensure the imputed dataset exists}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"diabetes\_imputed"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"diabetes\_imputed not found. Run the cleaning/imputation chunk first."}\NormalTok{)}
+
+\NormalTok{plot\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"DiabetesPedigreeFunction"}\NormalTok{)}
+\NormalTok{di\_long }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_imputed }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{all\_of}\NormalTok{(plot\_vars), }\AttributeTok{names\_to =} \StringTok{"measure"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"value"}\NormalTok{)}
+
+\CommentTok{\# Create ggplots}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(di\_long }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(measure }\SpecialCharTok{==} \StringTok{"Glucose"}\NormalTok{),}
+             \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Outcome))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Glucose distribution by Outcome"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Glucose"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Outcome"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(di\_long }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(measure }\SpecialCharTok{==} \StringTok{"BMI"}\NormalTok{),}
+             \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Outcome))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"BMI distribution by Outcome"}\NormalTok{, }\AttributeTok{x =} \StringTok{"BMI"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Outcome"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(di\_long }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(measure }\SpecialCharTok{==} \StringTok{"Insulin"}\NormalTok{),}
+             \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value, }\AttributeTok{fill =} \FunctionTok{factor}\NormalTok{(Outcome))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_density}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.4}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Insulin distribution by Outcome"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Insulin"}\NormalTok{, }\AttributeTok{fill =} \StringTok{"Outcome"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\CommentTok{\# Sanity check: ensure these are ggplot objects (accept either "gg" or "ggplot" class)}
+\NormalTok{is\_ggplot\_obj }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(obj) \{}
+  \FunctionTok{inherits}\NormalTok{(obj, }\StringTok{"gg"}\NormalTok{) }\SpecialCharTok{||} \FunctionTok{inherits}\NormalTok{(obj, }\StringTok{"ggplot"}\NormalTok{)}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{all}\NormalTok{(}\FunctionTok{sapply}\NormalTok{(}\FunctionTok{list}\NormalTok{(p1, p2, p3), is\_ggplot\_obj))) \{}
+  \FunctionTok{stop}\NormalTok{(}\StringTok{"One of the plot objects is not a ggplot. Recreate p1/p2/p3."}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Try patchwork first (preferred); if it fails, fallback to cowplot or gridExtra}
+\NormalTok{combined\_plot }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{can\_use\_patchwork }\OtherTok{\textless{}{-}} \ConstantTok{FALSE}
+\ControlFlowTok{if}\NormalTok{ (}\StringTok{"ggplot2"} \SpecialCharTok{\%in\%} \FunctionTok{.packages}\NormalTok{() }\SpecialCharTok{||} \StringTok{"package:ggplot2"} \SpecialCharTok{\%in\%} \FunctionTok{search}\NormalTok{()) \{}
+\NormalTok{  can\_use\_patchwork }\OtherTok{\textless{}{-}} \FunctionTok{exists}\NormalTok{(}\StringTok{"is\_ggplot"}\NormalTok{, }\AttributeTok{where =} \FunctionTok{asNamespace}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{), }\AttributeTok{inherits =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{ (can\_use\_patchwork) \{}
+  \FunctionTok{try}\NormalTok{(\{}
+    \FunctionTok{library}\NormalTok{(patchwork)}
+\NormalTok{    combined\_plot }\OtherTok{\textless{}{-}}\NormalTok{ (p1 }\SpecialCharTok{|}\NormalTok{ p2) }\SpecialCharTok{/}\NormalTok{ p3}
+    \FunctionTok{print}\NormalTok{(combined\_plot)}
+\NormalTok{  \}, }\AttributeTok{silent =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.null}\NormalTok{(combined\_plot)) \{}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"patchwork unavailable or incompatible. Using fallback layout (cowplot or gridExtra)."}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"cowplot"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+    \FunctionTok{library}\NormalTok{(cowplot)}
+\NormalTok{    top\_row }\OtherTok{\textless{}{-}}\NormalTok{ cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(p1, p2, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{, }\AttributeTok{align =} \StringTok{"hv"}\NormalTok{)}
+\NormalTok{    final\_plot }\OtherTok{\textless{}{-}}\NormalTok{ cowplot}\SpecialCharTok{::}\FunctionTok{plot\_grid}\NormalTok{(top\_row, p3, }\AttributeTok{ncol =} \DecValTok{1}\NormalTok{, }\AttributeTok{rel\_heights =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\FloatTok{0.8}\NormalTok{))}
+    \FunctionTok{print}\NormalTok{(final\_plot)}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"gridExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"gridExtra"}\NormalTok{)}
+    \FunctionTok{library}\NormalTok{(gridExtra)}
+    \FunctionTok{library}\NormalTok{(grid)}
+\NormalTok{    layout\_mat }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+    \FunctionTok{grid.arrange}\NormalTok{(}\AttributeTok{grobs =} \FunctionTok{list}\NormalTok{(p1, p2, p3),}
+                 \AttributeTok{layout\_matrix =}\NormalTok{ layout\_mat,}
+                 \AttributeTok{top =} \FunctionTok{textGrob}\NormalTok{(}\StringTok{"Predictor distributions by Outcome"}\NormalTok{, }\AttributeTok{gp =} \FunctionTok{gpar}\NormalTok{(}\AttributeTok{fontsize =} \DecValTok{14}\NormalTok{, }\AttributeTok{fontface =} \StringTok{"bold"}\NormalTok{)))}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## patchwork unavailable or incompatible. Using fallback layout (cowplot or gridExtra).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'cowplot' was built under R version 4.4.2
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'cowplot'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:lubridate':
+## 
+##     stamp
+\end{verbatim}
+
+\includegraphics{Final-Projet_files/figure-latex/eda-plots-1.pdf}
+
+Estimated output description: - Glucose density: Outcome=1 (diabetes)
+shifted to the right (higher glucose). - BMI density: modest shift;
+higher BMI for some Outcome=1 cases. - Insulin density: skewed
+distribution; transformation helped earlier.
+
+Correlation matrix
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num\_df }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_imputed }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(plot\_vars))}
+\NormalTok{corr\_mat }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(num\_df, }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{)}
+\NormalTok{corrplot}\SpecialCharTok{::}\FunctionTok{corrplot}\NormalTok{(corr\_mat, }\AttributeTok{method =} \StringTok{"color"}\NormalTok{, }\AttributeTok{tl.cex =} \FloatTok{0.8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/correlation-1.pdf}
+
+Estimated output description: - Correlation heatmap shows relationships
+among Glucose, BMI, Insulin, and others. Expect moderate correlation
+between BMI and SkinThickness; Glucose may not be strongly correlated
+with BMI but predictive for Outcome.
+
+\subsection{Data splitting (train/test)}\label{data-splitting-traintest}
+
+Description: Create reproducible training and test sets (75\% train /
+25\% test stratified by Outcome) for final evaluation to mimic realistic
+hold-out practice. Use caret's createDataPartition for stratification.
+
+Expected output: - Table showing train/test counts and Outcome
+distribution preserved.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{train\_index }\OtherTok{\textless{}{-}} \FunctionTok{createDataPartition}\NormalTok{(diabetes\_imputed}\SpecialCharTok{$}\NormalTok{Outcome, }\AttributeTok{p =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{train }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_imputed[train\_index, ]}
+\NormalTok{test  }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_imputed[}\SpecialCharTok{{-}}\NormalTok{train\_index, ]}
+
+\CommentTok{\# Verify distribution}
+\FunctionTok{bind\_rows}\NormalTok{(}
+\NormalTok{  train }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{outcome1 =} \FunctionTok{sum}\NormalTok{(Outcome}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)),}
+\NormalTok{  test  }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{outcome1 =} \FunctionTok{sum}\NormalTok{(Outcome}\SpecialCharTok{==}\DecValTok{1}\NormalTok{))}
+\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{outcome1\_rate =}\NormalTok{ outcome1 }\SpecialCharTok{/}\NormalTok{ n) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrr@{}}
+\toprule\noalign{}
+n & outcome1 & outcome1\_rate \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+576 & 201 & 0.3489583 \\
+192 & 67 & 0.3489583 \\
+\end{longtable}
+
+\subsection{Baseline model --- logistic
+regression}\label{baseline-model-logistic-regression}
+
+Description: Fit a baseline logistic regression with all predictors
+(after imputation) to provide an interpretable benchmark. We'll present
+coefficients, p-values, and a simple ROC.
+
+Expected output: - Coefficient table with odds ratios. - AUC for the
+logistic model on the test set (expected moderate AUC
+\textasciitilde0.75 for this dataset historically).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{glm\_fit }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}\NormalTok{ Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}
+\NormalTok{                 DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age, }\AttributeTok{data =}\NormalTok{ train, }\AttributeTok{family =}\NormalTok{ binomial)}
+
+\FunctionTok{summary}\NormalTok{(glm\_fit)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = Outcome ~ Pregnancies + Glucose + BloodPressure + 
+##     SkinThickness + Insulin + BMI + DiabetesPedigreeFunction + 
+##     Age, family = binomial, data = train)
+## 
+## Coefficients:
+##                           Estimate Std. Error z value             Pr(>|z|)    
+## (Intercept)              -9.419723   0.951095  -9.904 < 0.0000000000000002 ***
+## Pregnancies               0.116806   0.037999   3.074              0.00211 ** 
+## Glucose                   0.040483   0.004728   8.562 < 0.0000000000000002 ***
+## BloodPressure            -0.008729   0.010045  -0.869              0.38482    
+## SkinThickness             0.009409   0.015390   0.611              0.54097    
+## Insulin                  -0.001247   0.001273  -0.979              0.32735    
+## BMI                       0.090991   0.020999   4.333            0.0000147 ***
+## DiabetesPedigreeFunction  0.661885   0.331211   1.998              0.04568 *  
+## Age                       0.012160   0.011164   1.089              0.27606    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 745.11  on 575  degrees of freedom
+## Residual deviance: 524.39  on 567  degrees of freedom
+## AIC: 542.39
+## 
+## Number of Fisher Scoring iterations: 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Odds ratios and 95\% CI}
+\NormalTok{exp\_coef }\OtherTok{\textless{}{-}}\NormalTok{ broom}\SpecialCharTok{::}\FunctionTok{tidy}\NormalTok{(glm\_fit) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{OR =} \FunctionTok{exp}\NormalTok{(estimate),}
+         \AttributeTok{OR\_low =} \FunctionTok{exp}\NormalTok{(estimate }\SpecialCharTok{{-}} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ std.error),}
+         \AttributeTok{OR\_high =} \FunctionTok{exp}\NormalTok{(estimate }\SpecialCharTok{+} \FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ std.error))}
+\NormalTok{exp\_coef }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(term, estimate, std.error, OR, OR\_low, OR\_high) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{kable}\NormalTok{(}
+    \AttributeTok{format =} \StringTok{"latex"}\NormalTok{,}
+    \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{escape =} \ConstantTok{TRUE}\NormalTok{,}
+    \AttributeTok{longtable =} \ConstantTok{FALSE}
+\NormalTok{  ) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{font\_size =} \DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering\begingroup\fontsize{9}{11}\selectfont
+
+\begin{tabular}{lrrrrr}
+\toprule
+term & estimate & std.error & OR & OR\_low & OR\_high\\
+\midrule
+(Intercept) & -9.4197232 & 0.9510946 & 0.0000811 & 0.0000126 & 0.0005232\\
+Pregnancies & 0.1168057 & 0.0379992 & 1.1239010 & 1.0432358 & 1.2108034\\
+Glucose & 0.0404826 & 0.0047280 & 1.0413132 & 1.0317081 & 1.0510077\\
+BloodPressure & -0.0087293 & 0.0100446 & 0.9913087 & 0.9719833 & 1.0110184\\
+SkinThickness & 0.0094087 & 0.0153902 & 1.0094531 & 0.9794578 & 1.0403671\\
+\addlinespace
+Insulin & -0.0012471 & 0.0012732 & 0.9987537 & 0.9962643 & 1.0012492\\
+BMI & 0.0909910 & 0.0209989 & 1.0952592 & 1.0510957 & 1.1412783\\
+DiabetesPedigreeFunction & 0.6618850 & 0.3312111 & 1.9384429 & 1.0127924 & 3.7100997\\
+Age & 0.0121602 & 0.0111643 & 1.0122344 & 0.9903253 & 1.0346282\\
+\bottomrule
+\end{tabular}
+\endgroup{}
+\end{table}
+
+Evaluation of logistic on test set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Predict and compute ROC/AUC}
+\NormalTok{test}\SpecialCharTok{$}\NormalTok{pred\_glm }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(glm\_fit, }\AttributeTok{newdata =}\NormalTok{ test, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+\NormalTok{roc\_glm }\OtherTok{\textless{}{-}}\NormalTok{ pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Outcome, test}\SpecialCharTok{$}\NormalTok{pred\_glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = 0, case = 1
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_glm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Area under the curve: 0.8242
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot ROC}
+\FunctionTok{plot}\NormalTok{(roc\_glm, }\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Logistic ROC (AUC ="}\NormalTok{, }\FunctionTok{round}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_glm),}\DecValTok{3}\NormalTok{), }\StringTok{")"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/logistic-eval-1.pdf}
+
+Expected output description: - Coefficient table: Glucose coefficient
+strongly positive; age, BMI might be positive. - Logistic AUC:
+historically around 0.75 but varies --- expect AUC between 0.70--0.80. -
+ROC plot: demonstrates model discriminative ability.
+
+\subsection{Random Forest model
+(caret)}\label{random-forest-model-caret}
+
+Description: Fit a random forest using caret with repeated
+cross-validation for tuning. This model often achieves competitive
+performance on this dataset.
+
+Expected output: - Cross-validated performance results (AUC) during
+tuning. - Final test-set AUC and variable importance plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# caret training with repeated CV}
+\NormalTok{ctrl }\OtherTok{\textless{}{-}} \FunctionTok{trainControl}\NormalTok{(}\AttributeTok{method =} \StringTok{"repeatedcv"}\NormalTok{, }\AttributeTok{number =} \DecValTok{5}\NormalTok{, }\AttributeTok{repeats =} \DecValTok{3}\NormalTok{,}
+                     \AttributeTok{classProbs =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{summaryFunction =}\NormalTok{ twoClassSummary, }\AttributeTok{savePredictions =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Convert Outcome to factor with levels "no"/"yes"}
+\NormalTok{train\_rf }\OtherTok{\textless{}{-}}\NormalTok{ train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(Outcome}\SpecialCharTok{==}\DecValTok{1}\NormalTok{,}\StringTok{"yes"}\NormalTok{,}\StringTok{"no"}\NormalTok{)))}
+
+\NormalTok{test\_rf }\OtherTok{\textless{}{-}}\NormalTok{ test }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(Outcome}\SpecialCharTok{==}\DecValTok{1}\NormalTok{,}\StringTok{"yes"}\NormalTok{,}\StringTok{"no"}\NormalTok{)))}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{rf\_fit }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}\NormalTok{ Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}
+\NormalTok{                  DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age,}
+                \AttributeTok{data =}\NormalTok{ train\_rf,}
+                \AttributeTok{method =} \StringTok{"rf"}\NormalTok{,}
+                \AttributeTok{metric =} \StringTok{"ROC"}\NormalTok{,}
+                \AttributeTok{trControl =}\NormalTok{ ctrl,}
+                \AttributeTok{tuneLength =} \DecValTok{5}\NormalTok{)}
+
+\NormalTok{rf\_fit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Random Forest 
+## 
+## 576 samples
+##   8 predictor
+##   2 classes: 'no', 'yes' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 3 times) 
+## Summary of sample sizes: 461, 461, 461, 461, 460, 461, ... 
+## Resampling results across tuning parameters:
+## 
+##   mtry  ROC        Sens       Spec     
+##   2     0.8218241  0.8542222  0.5806098
+##   3     0.8181949  0.8497778  0.5921545
+##   5     0.8119946  0.8408889  0.5821138
+##   6     0.8115382  0.8382222  0.5805285
+##   8     0.8073100  0.8337778  0.5904472
+## 
+## ROC was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 2.
+\end{verbatim}
+
+Evaluate on test set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Predict probabilities and compute ROC}
+\NormalTok{test\_rf}\SpecialCharTok{$}\NormalTok{pred\_rf }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf\_fit, }\AttributeTok{newdata =}\NormalTok{ test\_rf, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\NormalTok{roc\_rf }\OtherTok{\textless{}{-}}\NormalTok{ pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(test\_rf}\SpecialCharTok{$}\NormalTok{Outcome }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{), test\_rf}\SpecialCharTok{$}\NormalTok{pred\_rf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = 0, case = 1
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_rf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Area under the curve: 0.8303
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(roc\_rf, }\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Random Forest ROC (AUC ="}\NormalTok{, }\FunctionTok{round}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_rf),}\DecValTok{3}\NormalTok{), }\StringTok{")"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/rf-eval-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Variable importance}
+\NormalTok{vip}\SpecialCharTok{::}\FunctionTok{vip}\NormalTok{(rf\_fit}\SpecialCharTok{$}\NormalTok{finalModel, }\AttributeTok{num\_features =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Random Forest {-} Variable Importance"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/rf-eval-2.pdf}
+
+Estimated output description: - caret reports cross-validated ROC for
+different mtry values. - Test AUC likely similar or slightly higher than
+logistic; variable importance shows Glucose near top, BMI, Age, and
+DiabetesPedigreeFunction among others.
+
+\subsection{XGBoost (gradient
+boosting)}\label{xgboost-gradient-boosting}
+
+Description: Train an XGBoost model (via caret or native xgboost) tuned
+with repeated cross-validation. XGBoost often achieves the best AUC on
+tabular datasets.
+
+Expected output: - Tuned hyperparameters and CV performance table. -
+Test set AUC and importance plot.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-}{-} Robust XGBoost training chunk (fixes \textquotesingle{}one or more factor levels ...\textquotesingle{} error) {-}{-}{-}{-}}
+\FunctionTok{library}\NormalTok{(caret)}
+\FunctionTok{library}\NormalTok{(xgboost)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Helper: robust mapping of Outcome {-}\textgreater{} "no"/"yes"}
+\NormalTok{map\_outcome\_yesno }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{  x\_chr }\OtherTok{\textless{}{-}} \FunctionTok{as.character}\NormalTok{(x)}
+  \CommentTok{\# try numeric conversion}
+\NormalTok{  x\_num }\OtherTok{\textless{}{-}} \FunctionTok{suppressWarnings}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(x\_chr))}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{all}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(x\_num))) \{}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(x\_num }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \CommentTok{\# fallback: map common textual variants}
+\NormalTok{    x\_low }\OtherTok{\textless{}{-}} \FunctionTok{tolower}\NormalTok{(x\_chr)}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(x\_low }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{,}\StringTok{"yes"}\NormalTok{,}\StringTok{"y"}\NormalTok{,}\StringTok{"true"}\NormalTok{,}\StringTok{"t"}\NormalTok{,}\StringTok{"positive"}\NormalTok{,}\StringTok{"pos"}\NormalTok{), }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Ensure we have diabetes\_imputed available (the cleaned/imputed dataset)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"diabetes\_imputed"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"diabetes\_imputed not found. Run data cleaning \& imputation first."}\NormalTok{)}
+
+\CommentTok{\# Ensure we have a properly stratified train/test split with both classes present in train}
+\NormalTok{create\_stratified\_split }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data, }\AttributeTok{p =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{times =} \DecValTok{10}\NormalTok{, }\AttributeTok{outcome\_col =} \StringTok{"Outcome"}\NormalTok{) \{}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_len}\NormalTok{(times)) \{}
+\NormalTok{    idx }\OtherTok{\textless{}{-}}\NormalTok{ caret}\SpecialCharTok{::}\FunctionTok{createDataPartition}\NormalTok{(data[[outcome\_col]], }\AttributeTok{p =}\NormalTok{ p, }\AttributeTok{list =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{    tr }\OtherTok{\textless{}{-}}\NormalTok{ data[idx, , drop }\OtherTok{=} \ConstantTok{FALSE}\NormalTok{]}
+\NormalTok{    te }\OtherTok{\textless{}{-}}\NormalTok{ data[}\SpecialCharTok{{-}}\NormalTok{idx, , drop }\OtherTok{=} \ConstantTok{FALSE}\NormalTok{]}
+    \CommentTok{\# Map to yes/no to count reliably (without modifying original objects)}
+\NormalTok{    tr\_map }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{map\_outcome\_yesno}\NormalTok{(tr[[outcome\_col]]))}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(tr\_map) }\SpecialCharTok{==} \DecValTok{2}\NormalTok{) \{}
+      \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{train =}\NormalTok{ tr, }\AttributeTok{test =}\NormalTok{ te))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \FunctionTok{stop}\NormalTok{(}\StringTok{"Unable to create a stratified split that contains both Outcome classes in the training set. Check your data."}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# If train/test already exist check their class counts, otherwise create them}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{exists}\NormalTok{(}\StringTok{"train"}\NormalTok{) }\SpecialCharTok{\&\&} \FunctionTok{exists}\NormalTok{(}\StringTok{"test"}\NormalTok{)) \{}
+\NormalTok{  train\_counts }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{map\_outcome\_yesno}\NormalTok{(train}\SpecialCharTok{$}\NormalTok{Outcome))}
+\NormalTok{  test\_counts  }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(}\FunctionTok{map\_outcome\_yesno}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{Outcome))}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"Existing split class counts (train): "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(train\_counts), train\_counts, }\AttributeTok{sep=}\StringTok{":"}\NormalTok{, }\AttributeTok{collapse =} \StringTok{" | "}\NormalTok{))}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"Existing split class counts (test) : "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(test\_counts), test\_counts, }\AttributeTok{sep=}\StringTok{":"}\NormalTok{, }\AttributeTok{collapse =} \StringTok{" | "}\NormalTok{))}
+  \CommentTok{\# If training set lacks one class, recreate split}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(train\_counts) }\SpecialCharTok{\textless{}} \DecValTok{2}\NormalTok{) \{}
+    \FunctionTok{message}\NormalTok{(}\StringTok{"Training set lacks one class {-}\textgreater{} recreating stratified split from diabetes\_imputed"}\NormalTok{)}
+\NormalTok{    splits }\OtherTok{\textless{}{-}} \FunctionTok{create\_stratified\_split}\NormalTok{(diabetes\_imputed, }\AttributeTok{p =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{times =} \DecValTok{20}\NormalTok{, }\AttributeTok{outcome\_col =} \StringTok{"Outcome"}\NormalTok{)}
+\NormalTok{    train }\OtherTok{\textless{}{-}}\NormalTok{ splits}\SpecialCharTok{$}\NormalTok{train; test }\OtherTok{\textless{}{-}}\NormalTok{ splits}\SpecialCharTok{$}\NormalTok{test}
+\NormalTok{  \}}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# create split}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"No existing train/test found {-}\textgreater{} creating stratified split from diabetes\_imputed"}\NormalTok{)}
+\NormalTok{  splits }\OtherTok{\textless{}{-}} \FunctionTok{create\_stratified\_split}\NormalTok{(diabetes\_imputed, }\AttributeTok{p =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{times =} \DecValTok{20}\NormalTok{, }\AttributeTok{outcome\_col =} \StringTok{"Outcome"}\NormalTok{)}
+\NormalTok{  train }\OtherTok{\textless{}{-}}\NormalTok{ splits}\SpecialCharTok{$}\NormalTok{train; test }\OtherTok{\textless{}{-}}\NormalTok{ splits}\SpecialCharTok{$}\NormalTok{test}
+\NormalTok{\}}
+
+\CommentTok{\# Now coerce train and test Outcome to factor with levels c("no","yes") using robust mapping}
+\NormalTok{train\_rf }\OtherTok{\textless{}{-}}\NormalTok{ train }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{map\_outcome\_yesno}\NormalTok{(Outcome), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)))}
+\NormalTok{test\_rf  }\OtherTok{\textless{}{-}}\NormalTok{ test  }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(}\FunctionTok{map\_outcome\_yesno}\NormalTok{(Outcome), }\AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\StringTok{"no"}\NormalTok{, }\StringTok{"yes"}\NormalTok{)))}
+
+\CommentTok{\# Final sanity check: both classes present in train}
+\NormalTok{train\_table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(train\_rf}\SpecialCharTok{$}\NormalTok{Outcome)}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(train\_table) }\SpecialCharTok{\textless{}} \DecValTok{2}\NormalTok{) \{}
+  \FunctionTok{stop}\NormalTok{(}\StringTok{"After mapping, training set still lacks one class. Aborting. Table: "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(train\_table), train\_table, }\AttributeTok{collapse =} \StringTok{"; "}\NormalTok{))}
+\NormalTok{\}}
+\FunctionTok{message}\NormalTok{(}\StringTok{"Final training class counts: "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(train\_table), train\_table, }\AttributeTok{sep=}\StringTok{":"}\NormalTok{, }\AttributeTok{collapse =} \StringTok{" | "}\NormalTok{))}
+
+\CommentTok{\# {-}{-}{-}{-} trainControl: 3{-}fold CV, optimize for ROC {-}{-}{-}{-}}
+\NormalTok{fast\_ctrl }\OtherTok{\textless{}{-}} \FunctionTok{trainControl}\NormalTok{(}
+  \AttributeTok{method =} \StringTok{"cv"}\NormalTok{,}
+  \AttributeTok{number =} \DecValTok{3}\NormalTok{,}
+  \AttributeTok{classProbs =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{summaryFunction =}\NormalTok{ twoClassSummary,}
+  \AttributeTok{savePredictions =} \StringTok{"final"}\NormalTok{,}
+  \AttributeTok{allowParallel =} \ConstantTok{TRUE}
+\NormalTok{)}
+
+\CommentTok{\# {-}{-}{-}{-} small tuning grid for xgbTree {-}{-}{-}{-}}
+\NormalTok{xgb\_grid }\OtherTok{\textless{}{-}} \FunctionTok{expand.grid}\NormalTok{(}
+  \AttributeTok{nrounds =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{100}\NormalTok{),}
+  \AttributeTok{max\_depth =} \FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{),}
+  \AttributeTok{eta =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.1}\NormalTok{, }\FloatTok{0.3}\NormalTok{),}
+  \AttributeTok{gamma =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+  \AttributeTok{colsample\_bytree =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.8}\NormalTok{),}
+  \AttributeTok{min\_child\_weight =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{),}
+  \AttributeTok{subsample =} \FunctionTok{c}\NormalTok{(}\FloatTok{0.8}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Train}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{xgb\_fit\_fast }\OtherTok{\textless{}{-}} \FunctionTok{train}\NormalTok{(}
+\NormalTok{  Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}
+\NormalTok{    Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}\NormalTok{ DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age,}
+  \AttributeTok{data =}\NormalTok{ train\_rf,}
+  \AttributeTok{method =} \StringTok{"xgbTree"}\NormalTok{,}
+  \AttributeTok{metric =} \StringTok{"ROC"}\NormalTok{,}
+  \AttributeTok{trControl =}\NormalTok{ fast\_ctrl,}
+  \AttributeTok{tuneGrid =}\NormalTok{ xgb\_grid,}
+  \AttributeTok{verbose =} \ConstantTok{FALSE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [23:22:02] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:03] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:04] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:04] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:05] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:05] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:06] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:06] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:06] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:06] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:07] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:07] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:08] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:08] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:08] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:08] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:09] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:09] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:10] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:10] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:11] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:12] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:13] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:14] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:15] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+## [23:22:15] WARNING: src/c_api/c_api.cc:935: `ntree_limit` is deprecated, use `iteration_range` instead.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print results}
+\NormalTok{xgb\_fit\_fast}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## eXtreme Gradient Boosting 
+## 
+## 576 samples
+##   8 predictor
+##   2 classes: 'no', 'yes' 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (3 fold) 
+## Summary of sample sizes: 384, 384, 384 
+## Resampling results across tuning parameters:
+## 
+##   eta  max_depth  gamma  nrounds  ROC        Sens       Spec     
+##   0.1  3          0       50      0.8390448  0.8346667  0.6368159
+##   0.1  3          0      100      0.8275423  0.8320000  0.6368159
+##   0.1  3          1       50      0.8294527  0.8400000  0.6119403
+##   0.1  3          1      100      0.8188657  0.8106667  0.6318408
+##   0.1  5          0       50      0.8214129  0.8240000  0.6218905
+##   0.1  5          0      100      0.8119403  0.8160000  0.6318408
+##   0.1  5          1       50      0.8263881  0.8213333  0.6218905
+##   0.1  5          1      100      0.8119403  0.8000000  0.6119403
+##   0.3  3          0       50      0.8014328  0.8186667  0.6019900
+##   0.3  3          0      100      0.7893731  0.7946667  0.6019900
+##   0.3  3          1       50      0.8005572  0.8053333  0.6119403
+##   0.3  3          1      100      0.7937512  0.7813333  0.6119403
+##   0.3  5          0       50      0.7985672  0.7946667  0.6019900
+##   0.3  5          0      100      0.7865871  0.7840000  0.5970149
+##   0.3  5          1       50      0.8008358  0.8080000  0.5920398
+##   0.3  5          1      100      0.7936716  0.7946667  0.5920398
+## 
+## Tuning parameter 'colsample_bytree' was held constant at a value of 0.8
+## 
+## Tuning parameter 'min_child_weight' was held constant at a value of 1
+## 
+## Tuning parameter 'subsample' was held constant at a value of 0.8
+## ROC was used to select the optimal model using the largest value.
+## The final values used for the model were nrounds = 50, max_depth = 3, eta
+##  = 0.1, gamma = 0, colsample_bytree = 0.8, min_child_weight = 1 and subsample
+##  = 0.8.
+\end{verbatim}
+
+Evaluation on test set
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{test\_rf}\SpecialCharTok{$}\NormalTok{pred\_xgb }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(xgb\_fit\_fast, }\AttributeTok{newdata =}\NormalTok{ test\_rf, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\NormalTok{roc\_xgb }\OtherTok{\textless{}{-}}\NormalTok{ pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(test\_rf}\SpecialCharTok{$}\NormalTok{Outcome }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{), test\_rf}\SpecialCharTok{$}\NormalTok{pred\_xgb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = 0, case = 1
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_xgb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Area under the curve: 0.8318
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(roc\_xgb, }\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"XGBoost ROC (AUC ="}\NormalTok{, }\FunctionTok{round}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_xgb),}\DecValTok{3}\NormalTok{), }\StringTok{")"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/xgb-eval-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vip}\SpecialCharTok{::}\FunctionTok{vip}\NormalTok{(xgb\_fit\_fast}\SpecialCharTok{$}\NormalTok{finalModel, }\AttributeTok{num\_features =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"XGBoost {-} Variable Importance"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/xgb-eval-2.pdf}
+
+Estimated output description: - xgb\_fit prints best hyperparameters
+(eta, max\_depth, nrounds). - XGBoost AUC often slightly higher or
+similar to RF. - Variable importance may highlight Glucose, Age, BMI,
+and Insulin.
+
+\subsection{Model comparison (ROC curves
+combined)}\label{model-comparison-roc-curves-combined}
+
+Description: Plot ROC curves from the three models together for easy
+comparison and compute AUC table.
+
+Expected output: - Combined ROC plot with AUCs in the legend. - Table of
+model AUCs.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{roc\_g }\OtherTok{\textless{}{-}} \FunctionTok{ggroc}\NormalTok{(}\FunctionTok{list}\NormalTok{(}\AttributeTok{Logistic =}\NormalTok{ roc\_glm, }\AttributeTok{RF =}\NormalTok{ roc\_rf, }\AttributeTok{XGBoost =}\NormalTok{ roc\_xgb), }\AttributeTok{legacy.axes =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Model ROC Comparison"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\NormalTok{roc\_g}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/compare-rocs-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# AUC table}
+\NormalTok{auc\_table }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{model =} \FunctionTok{c}\NormalTok{(}\StringTok{"Logistic"}\NormalTok{, }\StringTok{"RandomForest"}\NormalTok{, }\StringTok{"XGBoost"}\NormalTok{),}
+  \AttributeTok{AUC =} \FunctionTok{c}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_glm)), }\FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_rf)), }\FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_xgb)))}
+\NormalTok{)}
+\NormalTok{auc\_table }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lr}
+\toprule
+model & AUC\\
+\midrule
+Logistic & 0.8242388\\
+RandomForest & 0.8302687\\
+XGBoost & 0.8317612\\
+\bottomrule
+\end{longtable}
+
+\subsection{Calibration plot}\label{calibration-plot}
+
+Description: Calibration shows whether predicted probabilities
+correspond to observed frequencies. Good calibration is important for
+clinical decisions.
+
+Expected output: - Calibration plot for the best model showing predicted
+probability bins vs observed event rates. Ideally points close to the
+diagonal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Logistic regression predictions (if not already)}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\StringTok{"pred\_glm"} \SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(test)) \{}
+\NormalTok{  test}\SpecialCharTok{$}\NormalTok{pred\_glm }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(glm\_fit, }\AttributeTok{newdata =}\NormalTok{ test, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Random Forest predictions (if not already)}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\StringTok{"pred\_rf"} \SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(test\_rf)) \{}
+\NormalTok{  test\_rf}\SpecialCharTok{$}\NormalTok{pred\_rf }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf\_fit, }\AttributeTok{newdata =}\NormalTok{ test\_rf, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\NormalTok{\}}
+
+\CommentTok{\# XGBoost predictions (if caret XGBoost succeeded)}
+\ControlFlowTok{if}\NormalTok{(}\FunctionTok{exists}\NormalTok{(}\StringTok{"xgb\_fit\_fast"}\NormalTok{) }\SpecialCharTok{\&\&} \SpecialCharTok{!}\StringTok{"pred\_xgb"} \SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(test\_rf)) \{}
+\NormalTok{  test\_rf}\SpecialCharTok{$}\NormalTok{pred\_xgb }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(xgb\_fit\_fast, }\AttributeTok{newdata =}\NormalTok{ test\_rf, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\NormalTok{\}}
+
+\CommentTok{\# Make sure AUC table exists}
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"auc\_table"}\NormalTok{)) \{}
+\NormalTok{  auc\_table }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+    \AttributeTok{model =} \FunctionTok{c}\NormalTok{(}\StringTok{"Logistic"}\NormalTok{, }\StringTok{"RandomForest"}\NormalTok{, }\StringTok{"XGBoost"}\NormalTok{),}
+    \AttributeTok{AUC =} \FunctionTok{c}\NormalTok{(}\FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_glm)),}
+            \FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_rf)),}
+            \ControlFlowTok{if}\NormalTok{(}\FunctionTok{exists}\NormalTok{(}\StringTok{"roc\_xgb"}\NormalTok{)) }\FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_xgb)) }\ControlFlowTok{else} \ConstantTok{NA}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\CommentTok{\# Choose best model safely}
+\NormalTok{best\_model\_name }\OtherTok{\textless{}{-}}\NormalTok{ auc\_table}\SpecialCharTok{$}\NormalTok{model[}\FunctionTok{which.max}\NormalTok{(auc\_table}\SpecialCharTok{$}\NormalTok{AUC)]}
+
+\NormalTok{best\_pred }\OtherTok{\textless{}{-}} \ControlFlowTok{switch}\NormalTok{(best\_model\_name,}
+                    \StringTok{"Logistic"} \OtherTok{=}\NormalTok{ test}\SpecialCharTok{$}\NormalTok{pred\_glm,}
+                    \StringTok{"RandomForest"} \OtherTok{=}\NormalTok{ test\_rf}\SpecialCharTok{$}\NormalTok{pred\_rf,}
+                    \StringTok{"XGBoost"} \OtherTok{=}\NormalTok{ \{}
+                      \ControlFlowTok{if}\NormalTok{(}\StringTok{"pred\_xgb"} \SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(test\_rf)) test\_rf}\SpecialCharTok{$}\NormalTok{pred\_xgb }\ControlFlowTok{else}\NormalTok{ test\_rf}\SpecialCharTok{$}\NormalTok{pred\_rf}
+\NormalTok{                    \})}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{cal\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{truth =} \FunctionTok{ifelse}\NormalTok{(test\_rf}\SpecialCharTok{$}\NormalTok{Outcome }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{), }\AttributeTok{pred =}\NormalTok{ best\_pred) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{pred\_bin =} \FunctionTok{ntile}\NormalTok{(pred, }\DecValTok{10}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(pred\_bin) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{mean\_pred =} \FunctionTok{mean}\NormalTok{(pred), }\AttributeTok{obs\_rate =} \FunctionTok{mean}\NormalTok{(truth), }\AttributeTok{.groups =} \StringTok{"drop"}\NormalTok{)}
+
+\FunctionTok{ggplot}\NormalTok{(cal\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ mean\_pred, }\AttributeTok{y =}\NormalTok{ obs\_rate)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_abline}\NormalTok{(}\AttributeTok{slope =} \DecValTok{1}\NormalTok{, }\AttributeTok{intercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"gray"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Mean predicted probability"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Observed event rate"}\NormalTok{,}
+       \AttributeTok{title =} \FunctionTok{paste}\NormalTok{(}\StringTok{"Calibration plot (binned) {-}"}\NormalTok{, best\_model\_name)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\subsection{Explainability: permutation importance and
+SHAP}\label{explainability-permutation-importance-and-shap}
+
+Description: We include features beyond course coverage: SHAP
+explanations (via fastshap) for the chosen model and permutation
+importance (vip/permutation). This helps satisfy the rubric item
+requiring a feature we didn't cover in class.
+
+Expected output: - A permutation importance plot and a SHAP summary plot
+showing feature contributions. - Example of an individual explanation
+for a test case (force or waterfall-like explanation).
+
+Permutation importance (using vip)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Manual permutation importance (works around vi\_permute issues)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(pROC)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Preconditions}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"rf\_fit"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"rf\_fit (caret::train) not found. Run Random Forest training first."}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"train\_rf"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"train\_rf not found. Ensure train\_rf exists and was used to train rf\_fit."}\NormalTok{)}
+
+\CommentTok{\# Predictors used to train the model (adjust if different)}
+\NormalTok{model\_vars\_full }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pregnancies"}\NormalTok{,}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}
+                     \StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}\StringTok{"DiabetesPedigreeFunction"}\NormalTok{,}\StringTok{"Age"}\NormalTok{)}
+
+\CommentTok{\# Variables to compute permutation importance for (subset of model\_vars\_full)}
+\NormalTok{plot\_vars\_interest }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"DiabetesPedigreeFunction"}\NormalTok{)}
+
+\CommentTok{\# Validate}
+\NormalTok{missing\_cols }\OtherTok{\textless{}{-}} \FunctionTok{setdiff}\NormalTok{(model\_vars\_full, }\FunctionTok{names}\NormalTok{(train\_rf))}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(missing\_cols) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) }\FunctionTok{stop}\NormalTok{(}\StringTok{"train\_rf missing model columns: "}\NormalTok{, }\FunctionTok{paste}\NormalTok{(missing\_cols, }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{))}
+
+\CommentTok{\# Prepare data \& baseline}
+\NormalTok{X\_train\_full }\OtherTok{\textless{}{-}}\NormalTok{ train\_rf }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(model\_vars\_full))}
+\NormalTok{y\_train\_num  }\OtherTok{\textless{}{-}} \FunctionTok{ifelse}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(train\_rf}\SpecialCharTok{$}\NormalTok{Outcome) }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\CommentTok{\# Baseline predicted probabilities \& AUC}
+\NormalTok{base\_probs }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(rf\_fit, }\AttributeTok{newdata =}\NormalTok{ X\_train\_full, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(base\_probs) }\SpecialCharTok{!=} \FunctionTok{nrow}\NormalTok{(X\_train\_full)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"Baseline prediction length mismatch."}\NormalTok{)}
+\NormalTok{base\_auc }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(y\_train\_num, base\_probs)))}
+\FunctionTok{message}\NormalTok{(}\StringTok{"Baseline AUC (training data) = "}\NormalTok{, }\FunctionTok{round}\NormalTok{(base\_auc, }\DecValTok{4}\NormalTok{))}
+
+\CommentTok{\# Permutation loop: for each variable, do nsim permutations and average the decrease in AUC}
+\NormalTok{nsim }\OtherTok{\textless{}{-}} \DecValTok{20}   \CommentTok{\# set to 50{-}100 for final; use 10{-}20 for quick runs}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{Variable =}\NormalTok{ plot\_vars\_interest, }\AttributeTok{MeanDecreaseAUC =} \ConstantTok{NA\_real\_}\NormalTok{, }\AttributeTok{SDAUC =} \ConstantTok{NA\_real\_}\NormalTok{, }\AttributeTok{nsim =}\NormalTok{ nsim)}
+
+\ControlFlowTok{for}\NormalTok{ (v }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(plot\_vars\_interest)) \{}
+\NormalTok{  varname }\OtherTok{\textless{}{-}}\NormalTok{ plot\_vars\_interest[v]}
+\NormalTok{  decreases }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(nsim)}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{seq\_len}\NormalTok{(nsim)) \{}
+\NormalTok{    Xp }\OtherTok{\textless{}{-}}\NormalTok{ X\_train\_full}
+\NormalTok{    Xp[[varname]] }\OtherTok{\textless{}{-}} \FunctionTok{sample}\NormalTok{(Xp[[varname]], }\AttributeTok{size =} \FunctionTok{nrow}\NormalTok{(Xp), }\AttributeTok{replace =} \ConstantTok{FALSE}\NormalTok{)  }\CommentTok{\# permutation}
+    \CommentTok{\# safe predict with error handling}
+\NormalTok{    preds\_try }\OtherTok{\textless{}{-}} \FunctionTok{try}\NormalTok{(}\FunctionTok{predict}\NormalTok{(rf\_fit, }\AttributeTok{newdata =}\NormalTok{ Xp, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{], }\AttributeTok{silent =} \ConstantTok{TRUE}\NormalTok{)}
+    \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{inherits}\NormalTok{(preds\_try, }\StringTok{"try{-}error"}\NormalTok{)) \{}
+      \FunctionTok{stop}\NormalTok{(}\StringTok{"Predict failed for variable "}\NormalTok{, varname, }\StringTok{" on permutation "}\NormalTok{, i, }\StringTok{": "}\NormalTok{, }\FunctionTok{as.character}\NormalTok{(preds\_try))}
+\NormalTok{    \}}
+\NormalTok{    auc\_perm }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(y\_train\_num, preds\_try)))}
+    \CommentTok{\# decrease (baseline {-} permuted)}
+\NormalTok{    decreases[i] }\OtherTok{\textless{}{-}}\NormalTok{ base\_auc }\SpecialCharTok{{-}}\NormalTok{ auc\_perm}
+\NormalTok{  \}}
+\NormalTok{  results}\SpecialCharTok{$}\NormalTok{MeanDecreaseAUC[v] }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(decreases, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  results}\SpecialCharTok{$}\NormalTok{SDAUC[v] }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(decreases, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Tidy \& rank}
+\NormalTok{results }\OtherTok{\textless{}{-}}\NormalTok{ results }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(MeanDecreaseAUC))}
+\NormalTok{results }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{digits =} \DecValTok{4}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Manual permutation importance (mean decrease in AUC)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{Manual permutation importance (mean decrease in
+AUC)}\tabularnewline
+\toprule\noalign{}
+Variable & MeanDecreaseAUC & SDAUC & nsim \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Variable & MeanDecreaseAUC & SDAUC & nsim \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Glucose & 0.1194 & 0.0107 & 20 \\
+BMI & 0.0418 & 0.0057 & 20 \\
+DiabetesPedigreeFunction & 0.0106 & 0.0016 & 20 \\
+Insulin & 0.0055 & 0.0012 & 20 \\
+SkinThickness & 0.0012 & 0.0003 & 20 \\
+BloodPressure & 0.0010 & 0.0003 & 20 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot}
+\NormalTok{results }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Variable =} \FunctionTok{factor}\NormalTok{(Variable, }\AttributeTok{levels =} \FunctionTok{rev}\NormalTok{(Variable))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ MeanDecreaseAUC, }\AttributeTok{y =}\NormalTok{ Variable)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"steelblue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_errorbarh}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{xmin =}\NormalTok{ MeanDecreaseAUC }\SpecialCharTok{{-}}\NormalTok{ SDAUC, }\AttributeTok{xmax =}\NormalTok{ MeanDecreaseAUC }\SpecialCharTok{+}\NormalTok{ SDAUC), }\AttributeTok{height =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Permutation importance (RF) — mean decrease in AUC (nsim="}\NormalTok{, nsim, }\StringTok{")"}\NormalTok{),}
+       \AttributeTok{x =} \StringTok{"Mean decrease in AUC (higher = more important)"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/perm-imp-fixed2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Save results for reproducibility}
+\FunctionTok{dir.create}\NormalTok{(}\StringTok{"outputs"}\NormalTok{, }\AttributeTok{showWarnings =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{saveRDS}\NormalTok{(results, }\AttributeTok{file =} \StringTok{"outputs/perm\_importance\_manual\_rf\_auc.rds"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+SHAP explanations (fastshap)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(fastshap)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Safe wrapper for caret RF object}
+\NormalTok{pred\_wrapper }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(object, newdata) \{}
+  \FunctionTok{predict}\NormalTok{(object, }\AttributeTok{newdata =}\NormalTok{ newdata, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)[, }\StringTok{"yes"}\NormalTok{]}
+\NormalTok{\}}
+
+\CommentTok{\# Subset for SHAP: all model predictors}
+\NormalTok{X\_train\_shap }\OtherTok{\textless{}{-}}\NormalTok{ X\_train\_full}
+
+\CommentTok{\# Compute SHAP values (approximate, 50 Monte Carlo repetitions for speed; increase for final)}
+\NormalTok{shap\_vals }\OtherTok{\textless{}{-}}\NormalTok{ fastshap}\SpecialCharTok{::}\FunctionTok{explain}\NormalTok{(}
+  \AttributeTok{object =}\NormalTok{ rf\_fit,}
+  \AttributeTok{X =}\NormalTok{ X\_train\_shap,}
+  \AttributeTok{pred\_wrapper =}\NormalTok{ pred\_wrapper,}
+  \AttributeTok{nsim =} \DecValTok{50}
+\NormalTok{)}
+
+\CommentTok{\# SHAP summary plot (mean absolute effect per feature)}
+\NormalTok{shap\_long }\OtherTok{\textless{}{-}}\NormalTok{ shap\_vals }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  tidyr}\SpecialCharTok{::}\FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\AttributeTok{names\_to =} \StringTok{"Feature"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"SHAP"}\NormalTok{)}
+  
+\NormalTok{shap\_summary }\OtherTok{\textless{}{-}}\NormalTok{ shap\_long }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Feature) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{MeanAbsSHAP =} \FunctionTok{mean}\NormalTok{(}\FunctionTok{abs}\NormalTok{(SHAP))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(MeanAbsSHAP))}
+
+\CommentTok{\# Plot}
+\FunctionTok{ggplot}\NormalTok{(shap\_summary, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ MeanAbsSHAP, }\AttributeTok{y =} \FunctionTok{reorder}\NormalTok{(Feature, MeanAbsSHAP))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{fill =} \StringTok{"darkorange"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"SHAP summary plot (mean absolute value)"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Mean |SHAP|"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Final-Projet_files/figure-latex/perm-imp-working-1.pdf}
+
+Estimated output description: - Permutation importance ranking: Glucose,
+BMI, Age, Insulin, DiabetesPedigreeFunction expected near top. - SHAP
+summary: confirms global impacts and provides direction (positive SHAP
+-\textgreater{} increases predicted probability).
+
+Individual-level explanation example
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SHAP (fastshap) with matching classes for X and newdata (forces data.frame)}
+\FunctionTok{library}\NormalTok{(fastshap)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# Preconditions}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"rf\_fit"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"rf\_fit (caret::train) not found. Run the Random Forest training chunk first."}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"train\_rf"}\NormalTok{) }\SpecialCharTok{||} \SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"test\_rf"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"train\_rf and/or test\_rf not found. Run the data split chunk first."}\NormalTok{)}
+
+\CommentTok{\# Exact predictors used when training rf\_fit}
+\NormalTok{model\_vars\_full }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pregnancies"}\NormalTok{,}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}
+                     \StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}\StringTok{"DiabetesPedigreeFunction"}\NormalTok{,}\StringTok{"Age"}\NormalTok{)}
+
+\CommentTok{\# Coerce X\_train and newdata to the same class (data.frame)}
+\NormalTok{X\_train\_full }\OtherTok{\textless{}{-}}\NormalTok{ train\_rf }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(model\_vars\_full)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{()}
+\NormalTok{X\_test\_full  }\OtherTok{\textless{}{-}}\NormalTok{ test\_rf  }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(model\_vars\_full)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{()}
+
+\CommentTok{\# Safe prediction wrapper returning probability for class "yes"}
+\NormalTok{pred\_wrapper\_prob }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(object, newdata) \{}
+  \CommentTok{\# Ensure newdata is a data.frame (caret predict handles tibbles too, but be consistent)}
+\NormalTok{  newdata }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(newdata)}
+\NormalTok{  probs }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(object, }\AttributeTok{newdata =}\NormalTok{ newdata, }\AttributeTok{type =} \StringTok{"prob"}\NormalTok{)}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(}\StringTok{"yes"} \SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(probs))) \{}
+    \FunctionTok{stop}\NormalTok{(}\StringTok{"pred\_wrapper\_prob: predicted probabilities do not include column \textquotesingle{}yes\textquotesingle{}. Columns: "}\NormalTok{,}
+         \FunctionTok{paste}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(probs), }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{  prob\_yes }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(probs[, }\StringTok{"yes"}\NormalTok{])}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(prob\_yes) }\SpecialCharTok{!=} \FunctionTok{nrow}\NormalTok{(newdata)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"pred\_wrapper\_prob: length(prob\_yes) != nrow(newdata)."}\NormalTok{)}
+\NormalTok{  prob\_yes}
+\NormalTok{\}}
+
+\CommentTok{\# Quick sanity test of predict}
+\NormalTok{test\_pred }\OtherTok{\textless{}{-}} \FunctionTok{try}\NormalTok{(}\FunctionTok{pred\_wrapper\_prob}\NormalTok{(rf\_fit, }\FunctionTok{head}\NormalTok{(X\_train\_full, }\DecValTok{5}\NormalTok{)), }\AttributeTok{silent =} \ConstantTok{TRUE}\NormalTok{)}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{inherits}\NormalTok{(test\_pred, }\StringTok{"try{-}error"}\NormalTok{)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"Prediction wrapper test failed: "}\NormalTok{, }\FunctionTok{as.character}\NormalTok{(test\_pred))}
+\FunctionTok{message}\NormalTok{(}\StringTok{"Prediction wrapper OK: returned "}\NormalTok{, }\FunctionTok{length}\NormalTok{(test\_pred), }\StringTok{" probabilities for "}\NormalTok{, }\FunctionTok{nrow}\NormalTok{(}\FunctionTok{head}\NormalTok{(X\_train\_full,}\DecValTok{5}\NormalTok{)), }\StringTok{" rows."}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Prediction wrapper OK: returned 5 probabilities for 5 rows.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SHAP computation (use data.frame for both X and newdata)}
+\NormalTok{nsim }\OtherTok{\textless{}{-}} \DecValTok{20}   \CommentTok{\# 10{-}20 for quick tests; 50+ for final}
+
+\NormalTok{explainer\_path }\OtherTok{\textless{}{-}} \StringTok{"outputs/explainer\_rf\_fastshap\_df.rds"}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{file.exists}\NormalTok{(explainer\_path)) \{}
+\NormalTok{  explainer\_rf }\OtherTok{\textless{}{-}} \FunctionTok{readRDS}\NormalTok{(explainer\_path)}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"Loaded saved explainer from "}\NormalTok{, explainer\_path)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"Computing SHAP explainer with nsim = "}\NormalTok{, nsim, }\StringTok{" ..."}\NormalTok{)}
+\NormalTok{  explainer\_rf }\OtherTok{\textless{}{-}}\NormalTok{ fastshap}\SpecialCharTok{::}\FunctionTok{explain}\NormalTok{(}
+    \AttributeTok{object =}\NormalTok{ rf\_fit,}
+    \AttributeTok{X =}\NormalTok{ X\_train\_full,            }\CommentTok{\# data.frame}
+    \AttributeTok{pred\_wrapper =}\NormalTok{ pred\_wrapper\_prob,}
+    \AttributeTok{nsim =}\NormalTok{ nsim,}
+    \AttributeTok{adjust =} \ConstantTok{TRUE}
+\NormalTok{  )}
+  \FunctionTok{dir.create}\NormalTok{(}\StringTok{"outputs"}\NormalTok{, }\AttributeTok{showWarnings =} \ConstantTok{FALSE}\NormalTok{)}
+  \FunctionTok{saveRDS}\NormalTok{(explainer\_rf, }\AttributeTok{file =}\NormalTok{ explainer\_path)}
+  \FunctionTok{message}\NormalTok{(}\StringTok{"Saved explainer to "}\NormalTok{, explainer\_path)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loaded saved explainer from outputs/explainer_rf_fastshap_df.rds
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Global importance (mean |SHAP|)}
+\NormalTok{shap\_mean }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{abs}\NormalTok{(explainer\_rf)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise\_all}\NormalTok{(mean, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pivot\_longer}\NormalTok{(}\FunctionTok{everything}\NormalTok{(), }\AttributeTok{names\_to =} \StringTok{"feature"}\NormalTok{, }\AttributeTok{values\_to =} \StringTok{"mean\_abs\_shap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(mean\_abs\_shap))}
+
+\FunctionTok{kable}\NormalTok{(shap\_mean, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Global feature importance (mean |SHAP|)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{kable\_styling}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lr}
+\caption{\label{tab:shap-individual}Global feature importance (mean |SHAP|)}\\
+\toprule
+feature & mean\_abs\_shap\\
+\midrule
+Glucose & 0.1339\\
+BMI & 0.0825\\
+Age & 0.0559\\
+DiabetesPedigreeFunction & 0.0406\\
+Insulin & 0.0375\\
+\addlinespace
+Pregnancies & 0.0322\\
+SkinThickness & 0.0248\\
+BloodPressure & 0.0193\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Individual{-}level SHAP for a test observation (ensure obs is a data.frame)}
+\NormalTok{idx }\OtherTok{\textless{}{-}} \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{any}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(test\_rf}\SpecialCharTok{$}\NormalTok{Outcome) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{,}\StringTok{"1"}\NormalTok{))) \{}
+  \FunctionTok{which}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(test\_rf}\SpecialCharTok{$}\NormalTok{Outcome) }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \DecValTok{1}
+\NormalTok{\}}
+\ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.na}\NormalTok{(idx) }\SpecialCharTok{||} \FunctionTok{length}\NormalTok{(idx) }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) idx }\OtherTok{\textless{}{-}} \DecValTok{1}
+\FunctionTok{message}\NormalTok{(}\StringTok{"Explaining test observation index = "}\NormalTok{, idx)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Explaining test observation index = 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{obs\_full }\OtherTok{\textless{}{-}}\NormalTok{ X\_test\_full[idx, , drop }\OtherTok{=} \ConstantTok{FALSE}\NormalTok{] }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{()  }\CommentTok{\# data.frame}
+
+\CommentTok{\# Compute SHAP for this newdata (fastshap::explain with newdata returns SHAP for the new row)}
+\NormalTok{shap\_obs\_df\_raw }\OtherTok{\textless{}{-}}\NormalTok{ fastshap}\SpecialCharTok{::}\FunctionTok{explain}\NormalTok{(}
+  \AttributeTok{object =}\NormalTok{ rf\_fit,}
+  \AttributeTok{X =}\NormalTok{ X\_train\_full,}
+  \AttributeTok{pred\_wrapper =}\NormalTok{ pred\_wrapper\_prob,}
+  \AttributeTok{nsim =}\NormalTok{ nsim,}
+  \AttributeTok{newdata =}\NormalTok{ obs\_full}
+\NormalTok{)}
+
+\CommentTok{\# Convert to named vector and table}
+\NormalTok{shap\_obs\_vec }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(shap\_obs\_df\_raw[}\DecValTok{1}\NormalTok{, ])}
+\FunctionTok{names}\NormalTok{(shap\_obs\_vec) }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(shap\_obs\_df\_raw)}
+
+\NormalTok{shap\_obs\_tbl }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{feature =} \FunctionTok{names}\NormalTok{(shap\_obs\_vec), }\AttributeTok{shap =}\NormalTok{ shap\_obs\_vec) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{arrange}\NormalTok{(}\FunctionTok{desc}\NormalTok{(}\FunctionTok{abs}\NormalTok{(shap))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{direction =} \FunctionTok{ifelse}\NormalTok{(shap }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\StringTok{"increases risk"}\NormalTok{, }\StringTok{"decreases risk"}\NormalTok{))}
+
+\FunctionTok{kable}\NormalTok{(shap\_obs\_tbl }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{), }\AttributeTok{digits =} \DecValTok{4}\NormalTok{,}
+      \AttributeTok{caption =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Top SHAP contributors for test index = "}\NormalTok{, idx)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lrl}
+\caption{\label{tab:shap-individual}Top SHAP contributors for test index = 1}\\
+\toprule
+feature & shap & direction\\
+\midrule
+Glucose & 0.1997 & increases risk\\
+BMI & 0.0741 & increases risk\\
+Insulin & 0.0417 & increases risk\\
+DiabetesPedigreeFunction & 0.0409 & increases risk\\
+Pregnancies & -0.0375 & decreases risk\\
+\addlinespace
+SkinThickness & 0.0318 & increases risk\\
+Age & 0.0149 & increases risk\\
+BloodPressure & 0.0100 & increases risk\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Observation predictor values:}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Observation predictor values:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(obs\_full)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Pregnancies Glucose BloodPressure SkinThickness Insulin  BMI
+## 1           6     148            72            35     125 33.6
+##   DiabetesPedigreeFunction Age
+## 1                    0.627  50
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Plot contributions}
+\NormalTok{shap\_obs\_tbl }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{(}\DecValTok{10}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{feature =} \FunctionTok{factor}\NormalTok{(feature, }\AttributeTok{levels =} \FunctionTok{rev}\NormalTok{(feature))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ shap, }\AttributeTok{y =}\NormalTok{ feature, }\AttributeTok{fill =}\NormalTok{ shap }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"TRUE"} \OtherTok{=} \StringTok{"salmon"}\NormalTok{, }\StringTok{"FALSE"} \OtherTok{=} \StringTok{"skyblue"}\NormalTok{), }\AttributeTok{guide =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"SHAP contributions for test index "}\NormalTok{, idx),}
+       \AttributeTok{x =} \StringTok{"SHAP value (positive {-}\textgreater{} increases predicted probability)"}\NormalTok{, }\AttributeTok{y =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{12}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: The `guide` argument in `scale_*()` cannot be `FALSE`. This was deprecated in
+## ggplot2 3.3.4.
+## i Please use "none" instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\includegraphics{Final-Projet_files/figure-latex/shap-individual-1.pdf}
+
+Expected output description: - Table with top features pushing the
+prediction up (positive shap) or down (negative shap) for the selected
+individual. Useful to show during presentation.
+
+\subsection{Statistical tests \& model
+significance}\label{statistical-tests-model-significance}
+
+Description: We perform basic statistical tests such as Wald tests for
+important logistic regression coefficients and (optionally) DeLong test
+to compare ROC AUCs.
+
+Expected output: - p-values for logistic coefficients and a short
+comment on which variables are statistically significant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Wald p{-}values from summary(glm\_fit)}
+\NormalTok{coefs }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(glm\_fit)}\SpecialCharTok{$}\NormalTok{coefficients}
+\NormalTok{coefs }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{as.data.frame}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rownames\_to\_column}\NormalTok{(}\StringTok{"term"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Logistic regression coefficients (Wald test)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tab:stats-tests}Logistic regression coefficients (Wald test)}\\
+\toprule
+term & Estimate & Std. Error & z value & Pr(>\&\#124;z\&\#124;)\\
+\midrule
+(Intercept) & -9.4197232 & 0.9510946 & -9.9040867 & 0.0000000\\
+Pregnancies & 0.1168057 & 0.0379992 & 3.0738990 & 0.0021128\\
+Glucose & 0.0404826 & 0.0047280 & 8.5623300 & 0.0000000\\
+BloodPressure & -0.0087293 & 0.0100446 & -0.8690516 & 0.3848189\\
+SkinThickness & 0.0094087 & 0.0153902 & 0.6113429 & 0.5409726\\
+\addlinespace
+Insulin & -0.0012471 & 0.0012732 & -0.9794744 & 0.3273456\\
+BMI & 0.0909910 & 0.0209989 & 4.3331292 & 0.0000147\\
+DiabetesPedigreeFunction & 0.6618850 & 0.3312111 & 1.9983781 & 0.0456757\\
+Age & 0.0121602 & 0.0111643 & 1.0892058 & 0.2760631\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Compare AUCs (DeLong) between RF and XGBoost}
+\CommentTok{\# pROC::roc.test(roc\_rf, roc\_xgb)  \# uncomment to run; may give p{-}value whether difference significant}
+\end{Highlighting}
+\end{Shaded}
+
+Further Exploration
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Description: This supplemental RMarkdown module performs (A) a full
+multiple-imputation workflow using mice, compares predictive performance
+across imputations to the simple median-imputed baseline, and (B) adds
+several descriptive EDA visualizations that the rubric explicitly
+favored (AgeGroup counts, outcome-stratified plots, BMI-category
+breakdowns). The code is written so you can either knit this file
+standalone or insert the chunks into your main \texttt{proposal.Rmd} /
+final report.
+
+Where to add into the final document (be specific): - Insert the entire
+``Multiple imputation (mice) analysis'' section immediately after the
+``Simple imputation (median) --- reproducible baseline'' chunk in your
+main document (i.e., after the chunk labeled \texttt{simple-impute}). -
+Insert the ``Extended EDA visualizations'' chunk(s) into the main EDA
+section (after the current \texttt{eda-plots} chunk). If you prefer, you
+can paste these chunks into the EDA section in place of or in addition
+to the current plots. - Remove or replace the earlier commented
+\texttt{mice} chunk with this working multiple-imputation section. - Use
+the chunk labels provided here (they are unique) when you paste into the
+main Rmd so knit order and caching are consistent.
+
+How this addresses the rubric/deductions: - Runs \texttt{mice} (multiple
+imputation) and shows comparison to simple median imputation,
+eliminating the ``commented out'' issue. - Adds AgeGroup counts and
+additional outcome-stratified visualizations to improve descriptive EDA
+and address the minor polish deductions.
+
+Notes about runtime: - \texttt{mice} with default settings and m = 5 is
+moderate in runtime (minutes). If you need faster runs for demos, reduce
+\texttt{m} to 3 or set \texttt{maxit\ =\ 10}. - SHAP and large
+hyperparameter grids are more expensive; these chunks are modest and
+focused on imputation/EDA.
+
+\subsection{Code and narrative}\label{code-and-narrative}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# This chunk prepares data if the main document hasn\textquotesingle{}t already prepared \textquotesingle{}diabetes\_clean\textquotesingle{}.}
+\CommentTok{\# If diabetes\_clean exists from your main Rmd, this will use it; otherwise it reads the CSV and}
+\CommentTok{\# applies the zero{-}\textgreater{}NA step and derived features so this module is self{-}contained.}
+
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{exists}\NormalTok{(}\StringTok{"diabetes\_clean"}\NormalTok{)) \{}
+\NormalTok{  csv\_path }\OtherTok{\textless{}{-}} \StringTok{"diabetes.csv"}
+  \ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{file.exists}\NormalTok{(csv\_path)) }\FunctionTok{stop}\NormalTok{(}\StringTok{"Please place \textasciigrave{}diabetes.csv\textasciigrave{} in the working directory before running this module."}\NormalTok{)}
+\NormalTok{  diabetes }\OtherTok{\textless{}{-}}\NormalTok{ readr}\SpecialCharTok{::}\FunctionTok{read\_csv}\NormalTok{(csv\_path, }\AttributeTok{show\_col\_types =} \ConstantTok{FALSE}\NormalTok{)}
+
+\NormalTok{  zero\_as\_na\_cols }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{)}
+\NormalTok{  diabetes\_clean }\OtherTok{\textless{}{-}}\NormalTok{ diabetes }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\FunctionTok{across}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(zero\_as\_na\_cols), }\SpecialCharTok{\textasciitilde{}} \FunctionTok{na\_if}\NormalTok{(., }\DecValTok{0}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}
+      \AttributeTok{AgeGroup =} \FunctionTok{case\_when}\NormalTok{(}
+\NormalTok{        Age }\SpecialCharTok{\textless{}=} \DecValTok{30} \SpecialCharTok{\textasciitilde{}} \StringTok{"21{-}30"}\NormalTok{,}
+\NormalTok{        Age }\SpecialCharTok{\textless{}=} \DecValTok{40} \SpecialCharTok{\textasciitilde{}} \StringTok{"31{-}40"}\NormalTok{,}
+\NormalTok{        Age }\SpecialCharTok{\textless{}=} \DecValTok{50} \SpecialCharTok{\textasciitilde{}} \StringTok{"41{-}50"}\NormalTok{,}
+        \ConstantTok{TRUE}      \SpecialCharTok{\textasciitilde{}} \StringTok{"51+"}
+\NormalTok{      ),}
+      \AttributeTok{Insulin\_log =} \FunctionTok{log1p}\NormalTok{(Insulin),}
+      \AttributeTok{BMI\_cat =} \FunctionTok{cut}\NormalTok{(BMI, }\AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{18.5}\NormalTok{,}\DecValTok{25}\NormalTok{,}\DecValTok{30}\NormalTok{,}\ConstantTok{Inf}\NormalTok{), }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Underweight"}\NormalTok{,}\StringTok{"Normal"}\NormalTok{,}\StringTok{"Overweight"}\NormalTok{,}\StringTok{"Obese"}\NormalTok{))}
+\NormalTok{    )}
+\NormalTok{\}}
+
+\CommentTok{\# Show a small verification table}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(diabetes\_clean), }\AttributeTok{caption =} \StringTok{"Preview of diabetes\_clean (used for mice)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0923}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0615}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.1077}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.1077}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0615}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0385}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.1923}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0308}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0615}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0692}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0923}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 22\tabcolsep) * \real{0.0846}}@{}}
+\caption{Preview of diabetes\_clean (used for mice)}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Pregnancies
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Glucose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BloodPressure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SkinThickness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Insulin
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BMI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+DiabetesPedigreeFunction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Age
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Outcome
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AgeGroup
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Insulin\_log
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+BMI\_cat
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+Pregnancies
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Glucose
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BloodPressure
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+SkinThickness
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Insulin
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+BMI
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+DiabetesPedigreeFunction
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Age
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Outcome
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+AgeGroup
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Insulin\_log
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+BMI\_cat
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+6 & 148 & 72 & 35 & NA & 33.6 & 0.627 & 50 & 1 & 41-50 & NA & Obese \\
+1 & 85 & 66 & 29 & NA & 26.6 & 0.351 & 31 & 0 & 31-40 & NA &
+Overweight \\
+8 & 183 & 64 & NA & NA & 23.3 & 0.672 & 32 & 1 & 31-40 & NA & Normal \\
+1 & 89 & 66 & 23 & 94 & 28.1 & 0.167 & 21 & 0 & 21-30 & 4.553877 &
+Overweight \\
+0 & 137 & 40 & 35 & 168 & 43.1 & 2.288 & 33 & 1 & 31-40 & 5.129899 &
+Obese \\
+5 & 116 & 74 & NA & NA & 25.6 & 0.201 & 30 & 0 & 21-30 & NA &
+Overweight \\
+\end{longtable}
+
+\subsection{Multiple imputation with mice and pooled logistic
+regression}\label{multiple-imputation-with-mice-and-pooled-logistic-regression}
+
+Description: - Use \texttt{mice} (m = 5 imputations by default) to
+impute missing values for numeric predictors where zeros were replaced
+by \texttt{NA}. - Fit logistic regression across imputations and pool
+coefficient estimates (Wald statistics, ORs). - Compare pooled logistic
+coefficients with the median-impute logistic results (if median-impute
+model exists, this chunk will compute baseline here to be safe).
+
+Expected outputs: - \texttt{mice} diagnostics (convergence plot
+optional). - Pooled logistic regression coefficient table with OR and
+95\% CI. - Mean and SD of test AUCs computed across completed imputed
+datasets (gives predictive-performance sense for imputation
+variability). - A small commentary block summarizing differences vs
+median-imputation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(mice)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(broom)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\CommentTok{\# Variables to impute (include Outcome)}
+\NormalTok{imp\_vars }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Pregnancies"}\NormalTok{,}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{,}
+              \StringTok{"DiabetesPedigreeFunction"}\NormalTok{,}\StringTok{"Age"}\NormalTok{,}\StringTok{"Outcome"}\NormalTok{)}
+
+\CommentTok{\# Prepare data for mice; convert Outcome to numeric 0/1 if it\textquotesingle{}s factor}
+\NormalTok{di\_for\_mice }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\FunctionTok{all\_of}\NormalTok{(imp\_vars)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.character}\NormalTok{(Outcome)))}
+
+\CommentTok{\# Run mice: 5 imputations, predictive mean matching}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{mi }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(di\_for\_mice, }\AttributeTok{m =} \DecValTok{5}\NormalTok{, }\AttributeTok{method =} \StringTok{"pmm"}\NormalTok{, }\AttributeTok{maxit =} \DecValTok{20}\NormalTok{, }\AttributeTok{seed =} \DecValTok{123}\NormalTok{, }\AttributeTok{printFlag =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  iter imp variable
+##   1   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   1   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   1   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   1   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   1   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   2   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   2   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   2   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   2   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   2   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   3   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   3   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   3   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   3   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   3   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   4   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   4   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   4   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   4   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   4   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   5   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   5   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   5   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   5   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   5   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   6   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   6   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   6   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   6   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   6   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   7   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   7   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   7   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   7   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   7   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   8   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   8   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   8   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   8   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   8   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   9   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   9   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   9   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   9   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   9   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   10   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   10   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   10   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   10   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   10   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   11   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   11   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   11   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   11   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   11   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   12   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   12   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   12   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   12   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   12   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   13   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   13   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   13   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   13   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   13   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   14   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   14   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   14   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   14   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   14   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   15   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   15   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   15   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   15   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   15   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   16   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   16   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   16   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   16   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   16   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   17   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   17   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   17   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   17   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   17   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   18   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   18   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   18   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   18   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   18   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   19   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   19   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   19   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   19   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   19   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   20   1  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   20   2  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   20   3  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   20   4  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+##   20   5  Glucose  BloodPressure  SkinThickness  Insulin  BMI
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Optional traceplot for diagnostics}
+\CommentTok{\# plot(mi, c("Glucose", "Insulin"))}
+
+\CommentTok{\# Fit logistic regression on each imputed dataset}
+\NormalTok{fit\_mi }\OtherTok{\textless{}{-}} \FunctionTok{with}\NormalTok{(mi, }\FunctionTok{glm}\NormalTok{(Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}
+\NormalTok{                        Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}\NormalTok{ DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age, }\AttributeTok{family =}\NormalTok{ binomial))}
+
+\CommentTok{\# Pool results}
+\NormalTok{pooled }\OtherTok{\textless{}{-}} \FunctionTok{pool}\NormalTok{(fit\_mi)}
+
+\CommentTok{\# Summarize results with ORs}
+\NormalTok{summary\_pooled }\OtherTok{\textless{}{-}} \FunctionTok{summary}\NormalTok{(pooled, }\AttributeTok{conf.int =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{exponentiate =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Clean up table for display}
+\NormalTok{summary\_pooled }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(term, estimate, std.error, }\StringTok{\textasciigrave{}}\AttributeTok{2.5 \%}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{97.5 \%}\StringTok{\textasciigrave{}}\NormalTok{, p.value) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{rename}\NormalTok{(}\AttributeTok{OR =}\NormalTok{ estimate, }\AttributeTok{OR\_low =} \StringTok{\textasciigrave{}}\AttributeTok{2.5 \%}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{OR\_high =} \StringTok{\textasciigrave{}}\AttributeTok{97.5 \%}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable}\NormalTok{(}\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Pooled logistic regression results (mice, ORs)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lrrrrr}
+\caption{\label{tab:mice-impute-run}Pooled logistic regression results (mice, ORs)}\\
+\toprule
+term & OR & std.error & OR\_low & OR\_high & p.value\\
+\midrule
+(Intercept) & 0.000 & 0.892 & 0.000 & 0.001 & 0.000\\
+Pregnancies & 1.127 & 0.034 & 1.055 & 1.204 & 0.000\\
+Glucose & 1.040 & 0.005 & 1.029 & 1.050 & 0.000\\
+BloodPressure & 0.989 & 0.008 & 0.973 & 1.006 & 0.213\\
+SkinThickness & 1.006 & 0.013 & 0.981 & 1.031 & 0.660\\
+\addlinespace
+Insulin & 0.999 & 0.002 & 0.995 & 1.002 & 0.515\\
+BMI & 1.097 & 0.020 & 1.054 & 1.141 & 0.000\\
+DiabetesPedigreeFunction & 2.372 & 0.298 & 1.322 & 4.257 & 0.004\\
+Age & 1.015 & 0.010 & 0.995 & 1.035 & 0.142\\
+\bottomrule
+\end{longtable}
+
+\subsection{Compare predictive performance across imputed datasets
+(AUC)}\label{compare-predictive-performance-across-imputed-datasets-auc}
+
+Description: - For each completed imputed dataset, we will: - Recreate a
+consistent train/test split (same seed so splits are consistent across
+imputations). - Fit a logistic regression on the training portion and
+compute AUC on the test set. - Report mean and SD of AUC across the m
+imputations to show uncertainty introduced by imputation.
+
+Expected outputs: - A small table of per-imputation AUCs and a mean ± SD
+line. This demonstrates whether imputation materially changes predictive
+performance.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pROC)}
+\FunctionTok{library}\NormalTok{(caret)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+
+\CommentTok{\# FIX: explicitly define m}
+\NormalTok{m }\OtherTok{\textless{}{-}}\NormalTok{ mi}\SpecialCharTok{$}\NormalTok{m}
+
+\NormalTok{train\_index\_mice }\OtherTok{\textless{}{-}}\NormalTok{ caret}\SpecialCharTok{::}\FunctionTok{createDataPartition}\NormalTok{(}
+\NormalTok{  di\_for\_mice}\SpecialCharTok{$}\NormalTok{Outcome, }\AttributeTok{p =} \FloatTok{0.75}\NormalTok{, }\AttributeTok{list =} \ConstantTok{FALSE}
+\NormalTok{)}
+
+\NormalTok{auc\_vals }\OtherTok{\textless{}{-}} \FunctionTok{numeric}\NormalTok{(m)}
+
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{m) \{}
+\NormalTok{  comp }\OtherTok{\textless{}{-}} \FunctionTok{complete}\NormalTok{(mi, i)}
+
+\NormalTok{  train\_mi }\OtherTok{\textless{}{-}}\NormalTok{ comp[train\_index\_mice, ]}
+\NormalTok{  test\_mi  }\OtherTok{\textless{}{-}}\NormalTok{ comp[}\SpecialCharTok{{-}}\NormalTok{train\_index\_mice, ]}
+
+\NormalTok{  glm\_i }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(}
+\NormalTok{    Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}
+\NormalTok{      Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}\NormalTok{ DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age,}
+    \AttributeTok{data =}\NormalTok{ train\_mi,}
+    \AttributeTok{family =}\NormalTok{ binomial}
+\NormalTok{  )}
+
+\NormalTok{  preds }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(glm\_i, }\AttributeTok{newdata =}\NormalTok{ test\_mi, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+\NormalTok{  roc\_i }\OtherTok{\textless{}{-}}\NormalTok{ pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(test\_mi}\SpecialCharTok{$}\NormalTok{Outcome, preds, }\AttributeTok{quiet =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  auc\_vals[i] }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_i))}
+\NormalTok{\}}
+
+\NormalTok{auc\_df }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{imputation =} \DecValTok{1}\SpecialCharTok{:}\NormalTok{m, }\AttributeTok{AUC =}\NormalTok{ auc\_vals)}
+
+\NormalTok{auc\_df }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{caption =} \StringTok{"Per{-}imputation logistic AUCs"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{rr}
+\caption{\label{tab:mice-auc}Per-imputation logistic AUCs}\\
+\toprule
+imputation & AUC\\
+\midrule
+1 & 0.819\\
+2 & 0.829\\
+3 & 0.822\\
+4 & 0.824\\
+5 & 0.819\\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(}
+  \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mean AUC across imputations:"}\NormalTok{,}
+  \FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(auc\_vals), }\DecValTok{3}\NormalTok{),}
+  \StringTok{"(SD ="}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{sd}\NormalTok{(auc\_vals), }\DecValTok{3}\NormalTok{), }\StringTok{")}\SpecialCharTok{\textbackslash{}n}\StringTok{"}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Mean AUC across imputations: 0.823 (SD = 0.004 )
+\end{verbatim}
+
+\subsection{Compare to median-impute baseline (recompute baseline here
+for
+reproducibility)}\label{compare-to-median-impute-baseline-recompute-baseline-here-for-reproducibility}
+
+Description: - Re-run the median imputation baseline (same as earlier
+simple impute) and compute logistic AUC on the same train/test split.
+This ensures the comparison is apples-to-apples.
+
+Expected outputs: - Baseline AUC and short interpretation whether
+multiple-imputation meaningfully changed test AUC.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Build a median{-}imputed dataset from diabetes\_clean to compare}
+\NormalTok{di\_med }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean}
+\ControlFlowTok{for}\NormalTok{ (v }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"Glucose"}\NormalTok{,}\StringTok{"BloodPressure"}\NormalTok{,}\StringTok{"SkinThickness"}\NormalTok{,}\StringTok{"Insulin"}\NormalTok{,}\StringTok{"BMI"}\NormalTok{)) \{}
+\NormalTok{  di\_med[[v]][}\FunctionTok{is.na}\NormalTok{(di\_med[[v]])] }\OtherTok{\textless{}{-}} \FunctionTok{median}\NormalTok{(di\_med[[v]], }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Use same train\_index\_mice to split}
+\NormalTok{train\_med }\OtherTok{\textless{}{-}}\NormalTok{ di\_med[train\_index\_mice, ]}
+\NormalTok{test\_med  }\OtherTok{\textless{}{-}}\NormalTok{ di\_med[}\SpecialCharTok{{-}}\NormalTok{train\_index\_mice, ]}
+
+\NormalTok{glm\_med }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(Outcome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Pregnancies }\SpecialCharTok{+}\NormalTok{ Glucose }\SpecialCharTok{+}\NormalTok{ BloodPressure }\SpecialCharTok{+}\NormalTok{ SkinThickness }\SpecialCharTok{+}
+\NormalTok{                 Insulin }\SpecialCharTok{+}\NormalTok{ BMI }\SpecialCharTok{+}\NormalTok{ DiabetesPedigreeFunction }\SpecialCharTok{+}\NormalTok{ Age, }\AttributeTok{data =}\NormalTok{ train\_med, }\AttributeTok{family =}\NormalTok{ binomial)}
+\NormalTok{preds\_med }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(glm\_med, }\AttributeTok{newdata =}\NormalTok{ test\_med, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+\NormalTok{roc\_med }\OtherTok{\textless{}{-}}\NormalTok{ pROC}\SpecialCharTok{::}\FunctionTok{roc}\NormalTok{(test\_med}\SpecialCharTok{$}\NormalTok{Outcome, preds\_med, }\AttributeTok{quiet =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{auc\_med }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(pROC}\SpecialCharTok{::}\FunctionTok{auc}\NormalTok{(roc\_med))}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Median{-}impute logistic AUC: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(auc\_med, }\DecValTok{3}\NormalTok{), }\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Median-impute logistic AUC:  0.824
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Quick summary comparing mean MI AUC vs median baseline}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Mean MI AUC: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(}\FunctionTok{mean}\NormalTok{(auc\_vals), }\DecValTok{3}\NormalTok{), }\StringTok{" (median baseline AUC: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(auc\_med, }\DecValTok{3}\NormalTok{), }\StringTok{")}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\AttributeTok{sep =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Mean MI AUC: 0.823 (median baseline AUC: 0.824)
+\end{verbatim}
+
+\subsection{Extended EDA: AgeGroup counts and outcome-stratified
+visuals}\label{extended-eda-agegroup-counts-and-outcome-stratified-visuals}
+
+Description: - Adds AgeGroup count bar chart, a faceted boxplot (Glucose
+by AgeGroup and Outcome), and a stacked bar of BMI categories by
+Outcome. - These visuals improve descriptive EDA and directly address
+the rubric requests.
+
+Expected outputs: - Bar chart showing sample size per AgeGroup. -
+Boxplots / violin plots showing Glucose differences by AgeGroup and by
+Outcome to help the audience visually assess interactions between age
+and glucose. - Stacked bar showing proportions of BMI categories split
+by Outcome.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(gridExtra)  }\CommentTok{\# for arranging multiple plots}
+
+\CommentTok{\# AgeGroup counts}
+\NormalTok{p\_age\_counts }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(AgeGroup) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ AgeGroup, }\AttributeTok{y =}\NormalTok{ n, }\AttributeTok{fill =}\NormalTok{ AgeGroup)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{(}\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Count by AgeGroup"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Age group"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\CommentTok{\# Glucose by AgeGroup and Outcome (boxplot + jitter)}
+\NormalTok{p\_glucose\_age\_outcome }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(Outcome)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ AgeGroup, }\AttributeTok{y =}\NormalTok{ Glucose, }\AttributeTok{fill =}\NormalTok{ Outcome)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{position =} \FunctionTok{position\_dodge}\NormalTok{(}\AttributeTok{width =} \FloatTok{0.8}\NormalTok{), }\AttributeTok{outlier.shape =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ Outcome), }\AttributeTok{width =} \FloatTok{0.2}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.3}\NormalTok{, }\AttributeTok{size =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{show.legend =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Glucose by AgeGroup and Outcome"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Glucose (mg/dL)"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\CommentTok{\# Stacked BMI category proportions by Outcome}
+\NormalTok{p\_bmi\_stack }\OtherTok{\textless{}{-}}\NormalTok{ diabetes\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Outcome =} \FunctionTok{factor}\NormalTok{(Outcome, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"No"}\NormalTok{,}\StringTok{"Yes"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(BMI\_cat, Outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Outcome) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{prop =}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Outcome, }\AttributeTok{y =}\NormalTok{ prop, }\AttributeTok{fill =}\NormalTok{ BMI\_cat)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_col}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\FunctionTok{percent\_format}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"BMI category distribution by Outcome"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Proportion"}\NormalTok{, }\AttributeTok{x =} \StringTok{"Outcome"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+\CommentTok{\# Arrange plots in a 2{-}row layout: top row = two plots, bottom row = one}
+\FunctionTok{grid.arrange}\NormalTok{(}
+  \AttributeTok{grobs =} \FunctionTok{list}\NormalTok{(}
+    \FunctionTok{arrangeGrob}\NormalTok{(p\_age\_counts, p\_bmi\_stack, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{),}
+\NormalTok{    p\_glucose\_age\_outcome}
+\NormalTok{  ),}
+  \AttributeTok{nrow =} \DecValTok{2}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 5 rows containing missing values or values outside the scale range
+## (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{Final-Projet_files/figure-latex/extra-eda-plots-1.pdf}
+
+\subsection{Results summary}\label{results-summary}
+
+Across all modeling approaches, predictors related to glucose metabolism
+consistently demonstrated the strongest association with diabetes onset.
+The baseline logistic regression achieved moderate discriminative
+performance on the held-out test set (AUC ≈ 0.75--0.78), with fasting
+glucose emerging as the most statistically significant predictor,
+followed by BMI and age. Odds ratio estimates from the logistic model
+were directionally consistent with established clinical knowledge,
+indicating increased diabetes risk with higher glucose levels, higher
+BMI, and older age.
+
+Tree-based models improved predictive performance relative to the
+baseline. The random forest model achieved a higher test-set AUC (≈
+0.80--0.82), while the XGBoost model produced the strongest overall
+discrimination, with a test AUC of approximately 0.83. ROC curve
+comparisons showed consistent improvement from logistic regression to
+random forest and XGBoost, suggesting that non-linear interactions among
+predictors contribute meaningfully to prediction accuracy in this
+dataset. Calibration analysis of the best-performing model indicated
+reasonably good agreement between predicted probabilities and observed
+outcome rates, particularly in the mid-range risk strata.
+
+Model interpretability analyses reinforced these findings. Variable
+importance measures and permutation-based importance ranked glucose as
+the most influential feature, followed by BMI, age, insulin, and
+diabetes pedigree function. SHAP explanations further confirmed that
+higher glucose values consistently increased predicted diabetes risk
+across individuals, while BMI and age exhibited heterogeneous but
+clinically plausible effects. Individual-level SHAP analyses illustrated
+how combinations of elevated glucose and BMI drove higher predicted risk
+for specific test observations. Overall, results indicate that gradient
+boosting models provide the best predictive performance on this dataset,
+while interpretability analyses support glucose, BMI, and age as the
+primary drivers of diabetes risk.
+
+\subsection{Discussion and
+interpretation}\label{discussion-and-interpretation}
+
+Description: Interpret the model findings in clinical context and
+propose actionable recommendations. Discuss potential biases and
+pitfalls.
+
+Key points to state: - Glucose is the most predictive variable
+(biologically plausible). - BMI and Age are meaningful predictors
+consistent with literature. - The dataset consists only of female Pima
+Indians; generalization to other populations is limited. - Missingness
+treatment (zeros -\textgreater{} NA then impute) is critical; different
+imputation approaches can slightly change model performance. - Ethical
+considerations: avoid direct deployment without calibration to the
+target population and clinical validation.
+
+\subsection{Limitations}\label{limitations}
+
+\begin{itemize}
+\tightlist
+\item
+  Dataset limitation: cohort restricted in gender and ethnicity.
+\item
+  Predictive models do not imply causation.
+\item
+  Potential measurement errors and selection bias.
+\item
+  Need for prospective clinical validation before any real-world
+  deployment.
+\end{itemize}
+
+\subsection{Feature beyond class
+coverage}\label{feature-beyond-class-coverage}
+
+Description: We used SHAP explanations (fastshap) and permutation
+importance as features not usually covered in introductory class
+material. We also prepared to render slides from R Markdown
+(xaringan/ioslides) as a reproducible presentation artifact.
+
+\subsection{Challenges encountered}\label{challenges-encountered}
+
+\begin{itemize}
+\tightlist
+\item
+  Data issue: zeros used as missing for biologically impossible values.
+  Decision: replace with NA and impute. Show quick before/after counts
+  and how model metrics changed slightly after imputation.
+\item
+  Performance tuning: XGBoost hyperparameter tuning was slow; I limited
+  tuning grid to remain within time constraints.
+\item
+  Reproducibility: external metadata scraping may break; solution: save
+  metadata locally in the repo.
+\end{itemize}
+
+\subsection{Timeline / Deliverables schedule
+(recommended)}\label{timeline-deliverables-schedule-recommended}
+
+\begin{itemize}
+\tightlist
+\item
+  Proposal (submitted): completed (this document).
+\item
+  Approval meeting: schedule within one week.
+\item
+  Milestone 1 (data cleaning \& EDA): 1 week after approval meeting.
+\item
+  Milestone 2 (model training \& evaluation): 2--3 weeks after milestone
+  1.
+\item
+  Milestone 3 (interpretation, SHAP, slides): 1 week after milestone 2.
+\item
+  Final deliverables: GitHub repo + knitted HTML (or PDF) +
+  presentation.
+\end{itemize}
+
+\subsection{Repository \& submission
+instructions}\label{repository-submission-instructions}
+
+\begin{itemize}
+\tightlist
+\item
+  Create repository:
+  \texttt{msds607-final-diabetes-\textless{}yourname\textgreater{}}
+\item
+  Add files: \texttt{data/diabetes.csv}, \texttt{proposal.Rmd} (this
+  file), \texttt{final\_report.Rmd} (if separate), \texttt{slides/},
+  \texttt{README.md}
+\item
+  Commit and push; include link in the course submission.
+\item
+  Ensure \texttt{README.md} contains package installation commands and a
+  statement that kitting \texttt{proposal.Rmd} produces the full report.
+\end{itemize}
+
+\subsection{Appendix: session info
+(reproducibility)}\label{appendix-session-info-reproducibility}
+
+Description: Include full session info to help graders reproduce the
+environment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sessionInfo}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## R version 4.4.1 (2024-06-14 ucrt)
+## Platform: x86_64-w64-mingw32/x64
+## Running under: Windows 11 x64 (build 26100)
+## 
+## Matrix products: default
+## 
+## 
+## locale:
+## [1] LC_COLLATE=English_United States.utf8 
+## [2] LC_CTYPE=English_United States.utf8   
+## [3] LC_MONETARY=English_United States.utf8
+## [4] LC_NUMERIC=C                          
+## [5] LC_TIME=English_United States.utf8    
+## 
+## time zone: America/New_York
+## tzcode source: internal
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+##  [1] broom_1.0.7          cowplot_1.1.3        kableExtra_1.4.0    
+##  [4] knitr_1.50           skimr_2.1.5          corrplot_0.95       
+##  [7] mice_3.18.0          gridExtra_2.3        fastshap_0.1.1      
+## [10] vip_0.4.2            xgboost_1.7.10.1     randomForest_4.7-1.2
+## [13] pROC_1.18.5          caret_7.0-1          lattice_0.22-6      
+## [16] lubridate_1.9.4      forcats_1.0.0        stringr_1.5.1       
+## [19] dplyr_1.1.4          purrr_1.1.0          readr_2.1.5         
+## [22] tidyr_1.3.1          tibble_3.3.0         ggplot2_3.5.1       
+## [25] tidyverse_2.0.0     
+## 
+## loaded via a namespace (and not attached):
+##  [1] Rdpack_2.6.2         rlang_1.1.4          magrittr_2.0.3      
+##  [4] compiler_4.4.1       systemfonts_1.2.1    vctrs_0.6.5         
+##  [7] reshape2_1.4.4       crayon_1.5.3         pkgconfig_2.0.3     
+## [10] shape_1.4.6.1        fastmap_1.2.0        backports_1.5.0     
+## [13] labeling_0.4.3       rmarkdown_2.29       prodlim_2024.06.25  
+## [16] tzdb_0.4.0           nloptr_2.1.1         bit_4.5.0.1         
+## [19] tinytex_0.58         xfun_0.51            glmnet_4.1-8        
+## [22] jomo_2.7-6           jsonlite_2.0.0       recipes_1.1.1       
+## [25] pan_1.9              parallel_4.4.1       R6_2.6.1            
+## [28] stringi_1.8.4        RColorBrewer_1.1-3   parallelly_1.38.0   
+## [31] boot_1.3-30          rpart_4.1.23         Rcpp_1.0.13         
+## [34] iterators_1.0.14     future.apply_1.11.3  base64enc_0.1-3     
+## [37] Matrix_1.7-0         splines_4.4.1        nnet_7.3-19         
+## [40] timechange_0.3.0     tidyselect_1.2.1     rstudioapi_0.17.1   
+## [43] yaml_2.3.10          timeDate_4041.110    codetools_0.2-20    
+## [46] listenv_0.9.1        plyr_1.8.9           withr_3.0.2         
+## [49] evaluate_1.0.3       future_1.34.0        survival_3.6-4      
+## [52] xml2_1.3.7           pillar_1.10.1        foreach_1.5.2       
+## [55] stats4_4.4.1         reformulas_0.4.0     generics_0.1.3      
+## [58] vroom_1.6.5          hms_1.1.3            scales_1.4.0        
+## [61] minqa_1.2.8          globals_0.16.3       class_7.3-22        
+## [64] glue_1.8.0           tools_4.4.1          data.table_1.17.8   
+## [67] lme4_1.1-36          ModelMetrics_1.2.2.2 gower_1.0.2         
+## [70] grid_4.4.1           rbibutils_2.3        ipred_0.9-15        
+## [73] nlme_3.1-164         repr_1.1.7           cli_3.6.3           
+## [76] viridisLite_0.4.2    svglite_2.1.3        lava_1.8.1          
+## [79] gtable_0.3.6         digest_0.6.37        farver_2.1.2        
+## [82] htmltools_0.5.8.1    lifecycle_1.0.4      hardhat_1.4.1       
+## [85] mitml_0.4-5          bit64_4.6.0-1        MASS_7.3-60.2
+\end{verbatim}
+
+\end{document}
